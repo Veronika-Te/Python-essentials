@@ -52,17 +52,18 @@ def add_sentence_to_file(text_to_append):
     except:
         msg="FileExistsError"
         return msg
+        
+if __name__=="__main__":
+ res=open_file_append_line()
+ print(f"append_mode.txt:\n{res} ")
 
-res=open_file_append_line()
-print(f"append_mode.txt:\n{res} ")
-
-res2=open_file_x_mode()
-print(f"exclusive_mode.txt: {res2}")
+ res2=open_file_x_mode()
+ print(f"exclusive_mode.txt: {res2}")
 
 
-text_to_append = "In fact, as a general-purpose language. Python's roles are virtually unlimited: \n you can use it for everything from website development and gaming to robotics and spacecraft control."
-res3=add_sentence_to_file(text_to_append)
-print("------Text in file------")
-print(f"{res3[0]} \n")
-print("------After adding sentence to the end position-------")
-print(f"{res3[1]}")
+ text_to_append = "In fact, as a general-purpose language. Python's roles are virtually unlimited: \n you can use it for everything from website development and gaming to robotics and spacecraft control."
+ res3=add_sentence_to_file(text_to_append)
+ print("------Text in file------")
+ print(f"{res3[0]} \n")
+ print("------After adding sentence to the end position-------")
+ print(f"{res3[1]}")
