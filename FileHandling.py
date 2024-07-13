@@ -52,6 +52,23 @@ def add_sentence_to_file(text_to_append):
     except:
         msg="FileExistsError"
         return msg
+#4
+def find_duplicates_in_text():
+    myfile4=open('Rabbit.txt','r')
+    lines=myfile4.read().splitlines()
+    check_words=set()
+    check_words=("example","all","word", "up" , "did ", "him")
+    dict_words={}
+    for line in lines:
+        tokens=line.split(" ")
+        for item in tokens:
+            litem = item.lower()
+            if(litem in check_words):
+                if (litem in dict_words):
+                    dict_words[litem]+=1
+                else:
+                    dict_words[litem]=1
+    return dict_words
         
 if __name__=="__main__":
  res=open_file_append_line()
@@ -67,3 +84,8 @@ if __name__=="__main__":
  print(f"{res3[0]} \n")
  print("------After adding sentence to the end position-------")
  print(f"{res3[1]}")
+ print("________________________________")
+ res_dict=find_duplicates_in_text()
+ print("Words count:")
+ for key,value in res_dict.items():
+     print(key,value)
