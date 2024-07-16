@@ -1,5 +1,5 @@
-"""This function validates input username"""
 def is_username_validated(input_username):
+    """Validates input username"""
     if not input_username:
        print("Please enter Username!!")
        return False
@@ -28,8 +28,9 @@ def is_username_validated(input_username):
 #       try again
 
 
-"""This function validates phonenumber"""
+
 def  is_phonenumber_validated(phonenumber):
+    """Validates phonenumber"""
     if not phonenumber:
        print("Please Enter phone number")
        return False
@@ -40,12 +41,12 @@ def  is_phonenumber_validated(phonenumber):
     length_phnum=len(phonenumber)
     defined_len1=9 #count of digits in phone numbers (in Armenia) started with number "0"
     defined_len2=12 #count of digits in phone numbers (in Armenia) started with number "+374"
-    if (phonenumber[0] == "0") & (length_phnum==defined_len1): #count of digits in phone numbers (in Armenia) started with number "0"
+    if (phonenumber[0] == "0") and (length_phnum==defined_len1): #count of digits in phone numbers (in Armenia) started with number "0"
         if int(phonenumber[1:9]):
            return True     
         else:
            return False
-    elif (phonenumber[0]=="+") & (phonenumber[1:4]=="374") & (length_phnum==defined_len2):
+    elif (phonenumber[0]=="+") and (phonenumber[1:4]=="374") and (length_phnum==defined_len2):
          if int(phonenumber[1:12]): 
             return True
          else:
@@ -54,8 +55,9 @@ def  is_phonenumber_validated(phonenumber):
          print("Please enter valid phone number")
          return False
 
-"""This function validates email"""
+
 def is_email_validated(input_email):
+    """Validates email"""
     if not input_email:
        print("Please enter valid Email address")
        return
@@ -99,14 +101,15 @@ def is_email_validated(input_email):
            else:
               flag3=False
 
-       return flag1 & flag2 & flag3
+       return flag1 and flag2 and flag3
 
     else:
         return False
 
 
-"""This function validates password"""
+
 def is_password_validated(input_password):
+    """Validates password"""
     max_len=8
     if(len(input_password)>=max_len):
        flag1=False
@@ -131,51 +134,50 @@ def is_password_validated(input_password):
     else:
         print("The length is too short, should be at least 8")
 
-    return flag1 & flag2 & flag3 & flag4
+    return flag1 and flag2 and flag3 and flag4
 
-    
-
-if __name__ == '__main__':
-    #USERNAME
+def get_valid_username():
+    """Gets input username and check if info was validated"""
     while(True):
         try:
             input_username=input("Please enter username:")
             if is_username_validated(input_username):
                print("Validated username:", input_username)
-               break
+               return input_username
             else:
                print("Not validated, please try again")
-               
         except:
             print("Please enter valid username")
            
-    #PHONENUMBER
+
+def get_valid_phonenumber():
+    """Gets input phonenumber and check if info was validated"""
     while(True):
         try:
             input_phonenumber=input("Please enter your phone number: ")
             if is_phonenumber_validated(input_phonenumber):
                print("Validated phone number:",input_phonenumber)
-               break
+               return input_phonenumber
             else:
                print("Enter valid phone number in Armenia +374XXXXXX or 0XXXXXXXX")
         except:
             print("Enter valid phone number in Armenia +374XXXXXX or 0XXXXXXXX")
 
-    
-    #EMAIL
+def get_valid_email():
+    """Gets input email and check if info was validated"""
     while(True):
         try: 
             input_email=input("Please enter your email: ")
             if is_email_validated(input_email):
                print("Validated Email address:",input_email)
-               break
+               return input_email
             else:
                print("Enter valid Email address")
         except:
             print("Enter valid Email address")
 
-    #PASSWORD
-    repeat=2
+def get_valid_password():
+    """Gets input password and check if info was validated, if it was validated, then checks match of repeated password"""
     while(True):
         try: 
             input_password=input("Please enter password: ")
@@ -184,8 +186,7 @@ if __name__ == '__main__':
                repeat_password=input("Please reenter your password: ")
                #repeat validation
                if(repeat_password==input_password):
-                   print("Congratulations, you are registered")
-                   break
+                   return input_password
                else:
                    print("Please try again")
                    continue    
@@ -194,10 +195,31 @@ if __name__ == '__main__':
         except:
             print("Enter valid Email address")
 
-    
+def collect_info_of_the_user(input_username,input_phonenumber,input_email,input_password):
+    """Collects info about one user"""
     ls=[]
     ls.append(input_username)
     ls.append(input_phonenumber)
     ls.append(input_email)
     ls.append(input_password)
-    print(ls)
+    return ls
+
+def main():
+    #USERNAME
+    username=get_valid_username()
+    #PHONENUMBER
+    phonenumber=get_valid_phonenumber()
+    #EMAIL
+    email=get_valid_email()
+    #PASSWORD
+    password=get_valid_password()
+
+    ls=collect_info_of_the_user(username,phonenumber,email,password)
+    print("Congratulations, you are registered")
+    for i in ls:
+        print(i)
+
+if __name__ == '__main__': 
+    main()
+  
+
