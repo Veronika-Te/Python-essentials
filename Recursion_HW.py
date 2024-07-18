@@ -36,13 +36,12 @@ def IsPalindrome_recursive(input_str):
     else:
         return input_str[0] == input_str[-1] and IsPalindrome_recursive(input_str[1:-1])
 
-def reverse_recursive(s):
-    """Recursive function. Reverses a given string."""
+def reverse_recursive_2(s):
+    """Recursive function. Reverses a given string. Classwork version"""
     if not s:
        return " "
     else:
-       reverse_recursive(s[1:])
-       return s[::-1]   
+       return reverse_recursive_2(s[1:]) + s[0]
 
 def fibonacci_recursive(n):
    """Recursive function. Generates the Nth Fibonacci number."""
@@ -95,8 +94,8 @@ if __name__=="__main__":
 
  #Reverses string
  s="Hello"
- x=reverse_recursive(s)
- print("Reversed string:", x)
+ z=reverse_recursive_2(s)
+ print("Reversed string:", z)
  print("\n")
  
  #Fibonacci
