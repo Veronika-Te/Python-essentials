@@ -24,8 +24,8 @@ def factorial_recursive(n):
 
 def acc_recursive(n):
     """Recursive function. Finds the sum of the first N natural numbers."""
-    if n==0:
-       return n 
+    if n<2:
+       return 1
     return n + acc_recursive(n-1)
 
 
