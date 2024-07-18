@@ -18,7 +18,7 @@ def print_numbers_recursive_reversed(n):
 
 def factorial_recursive(n):
     """Recursive function. Calculates the factorial of a given number."""
-    if n==0:
+    if n<=1:
         return 1
     return n * factorial_recursive(n-1) 
 
