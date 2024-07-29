@@ -29,7 +29,7 @@ def acc_recursive(n):
     return n + acc_recursive(n-1)
 
 
-def IsPalindrome_recursive(input_str):
+def isPalindrome_recursive(input_str):
     """Recursive function. Checks if a given string is a palindrome."""
     if len(input_str) <= 1:
         return True
@@ -124,7 +124,7 @@ def main()->None:
 
     #Checks if a given string is a palindrome
     s="paramarap"
-    res3=IsPalindrome_recursive(s)
+    res3=isPalindrome_recursive(s)
     print(f"{s} is palindrome? : {res3}")
 
     #Prints all elements of a list
