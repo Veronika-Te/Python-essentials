@@ -55,10 +55,11 @@ def main()->None:
   age=37
   city="New York"
 
-
   greet=print_message_to_user(name, surname, msg)
+
   user_profile=create_user_profile(name, surname, age=37, city="New York")
   print(greet,end='\n')
+  
   print("---USER PROFILE---")
   for key,value in user_profile.items():
       print(key,value)
@@ -69,6 +70,7 @@ def main()->None:
   for key,value in updated_user_profile.items():
       print(key,value)
   print("\n")
+
   print("---UPDATED (with kwargs)---")
   updated=change_user_settings_kwargs(name="Mike", surname="Pitt", age=30, city="London")
   for key,value in updated.items():
