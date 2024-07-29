@@ -81,76 +81,77 @@ def isSorted(lst):
         return isSorted(lst[1:])
     return False
 
+def main()->None:
+    #TODO add user input
+    n=5
+    # 1 2 3 4 5...n
+    print("Numbers recursive: ")
+    res=print_numbers_recursive(n)
+    print(res) 
+
+    print("\n") 
+    # n...5 4 3 2 1
+    print("Numbers(reversed) recursive: ")
+    res2=print_numbers_recursive_reversed(n)
+    print(res2) 
+
+    #Factorial
+    f=factorial_recursive(n)
+    print(f"Factorial: {n}! = {f} ")
+
+    #Sum of the first N natural numbers
+    print("\n")  
+    res=acc_recursive(5)
+    print(f"Sum of the first N natural numbers: { res}")
+    print("\n") 
+
+    #Reverses string
+    s="Hello"
+    z=reverse_recursive_2(s)
+    print("Reversed string:", z)
+    print("\n")
+ 
+    #Fibonacci
+    n=10
+    if n <= 0:
+       print("Plese enter a positive integer")
+    else:
+       print("Fibonacci sequence:")
+    for i in range(n+1):
+        print(fibonacci_recursive(i))
+
+    print("\n")
+
+    #Checks if a given string is a palindrome
+    s="paramarap"
+    res3=IsPalindrome_recursive(s)
+    print(f"{s} is palindrome? : {res3}")
+
+    #Prints all elements of a list
+    lst = [11,22,33,44]
+    print_list_recursive(lst, len(lst)-1)
+    print("\n")
+
+    #Length of list
+    length=count_elements_recursion(lst)
+    print(f"Length of list: {length}")
+
+    #Sum of list's elements
+    lst=[1,2,3,4,5,8]
+    lenght=len(lst)
+    sum_lst=findSum(lst, lenght)
+    print("Sum of elements in list", sum_lst)
+
+    #If list is sorted
+    answer=isSorted(lst)
+    if answer:
+        print(f"{answer}. The list is in ascending order.")
+    else:
+        print(f"{answer}. The list is not sorted.")
 
 if __name__=="__main__":
-
-#TODO add user input
- n=5
- # 1 2 3 4 5...n
- print("Numbers recursive: ")
- res=print_numbers_recursive(n)
- print(res)
-
- print("\n") 
- # n...5 4 3 2 1
- print("Numbers(reversed) recursive: ")
- res2=print_numbers_recursive_reversed(n)
- print(res2) 
-
- #Factorial
- f=factorial_recursive(n)
- print(f"Factorial: {n}! = {f} ")
-
- #Sum of the first N natural numbers
- print("\n")  
- res=acc_recursive(5)
- print(f"Sum of the first N natural numbers: { res}")
- print("\n") 
-
- #Reverses string
- s="Hello"
- z=reverse_recursive_2(s)
- print("Reversed string:", z)
- print("\n")
+    main()
  
- #Fibonacci
- n=10
- if n <= 0:
-   print("Plese enter a positive integer")
- else:
-   print("Fibonacci sequence:")
-   for i in range(n+1):
-       print(fibonacci_recursive(i))
-
- print("\n")
-
-
- #Checks if a given string is a palindrome
- s="paramarap"
- res3=IsPalindrome_recursive(s)
- print(f"{s} is palindrome? : {res3}")
-
- #Prints all elements of a list
- lst = [11,22,33,44]
- print_list_recursive(lst, len(lst)-1)
- print("\n")
-
- #Length of list
- length=count_elements_recursion(lst)
- print(f"Length of list: {length}")
-
-#Sum of list's elements
- lst=[1,2,3,4,5,8]
- lenght=len(lst)
- sum_lst=findSum(lst, lenght)
- print("Sum of elements in list", sum_lst)
-
-#If list is sorted
- answer=isSorted(lst)
- if answer:
-     print(f"{answer}.The list is in ascending order.")
- else:
-     print(f"{answer}. The list is not sorted.")
 
 
 
