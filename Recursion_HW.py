@@ -66,6 +66,21 @@ def count_elements_recursion(lst):
         return 0
     return 1 + count_elements_recursion(lst[1:])
 
+def findSum(lst, length):
+    """Recursive function. Finds sum of array elements using recursion"""
+    if length<=0:
+        return 0
+    else:
+        return findSum(lst, length-1) + lst[length-1]
+
+def isSorted(lst):
+    """Recursive function to check if a list is sorted in ascending order"""
+    if len(lst) in [0,1]:
+        return True
+    if lst[0]<=lst[1]:
+        return isSorted(lst[1:])
+    return False
+
 
 if __name__=="__main__":
 
@@ -124,6 +139,18 @@ if __name__=="__main__":
  length=count_elements_recursion(lst)
  print(f"Length of list: {length}")
 
+#Sum of list's elements
+ lst=[1,2,3,4,5,8]
+ lenght=len(lst)
+ sum_lst=findSum(lst, lenght)
+ print("Sum of elements in list", sum_lst)
+
+#If list is sorted
+ answer=isSorted(lst)
+ if answer:
+     print(f"{answer}.The list is in ascending order.")
+ else:
+     print(f"{answer}. The list is not sorted.")
 
 
 
