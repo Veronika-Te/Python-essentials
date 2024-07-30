@@ -20,10 +20,10 @@ def is_username_validated(input_username):
         print("Please enter alphanumeric characters [A-Z],[a-z],[0-9]")
         return False
     elif input_username in reserved_words:
-         print("!!! Enter valid username which contains your name")
-         return False
+        print("!!! Enter valid username which contains your name")
+        return False
     else:
-         return True
+        return True
 
 #TODO if inputusername in dictofusers search , in order to be unique
 #       try again
@@ -35,8 +35,6 @@ def  is_phonenumber_validated(phonenumber):
        return False
     
     phonenumber=phonenumber.replace(" ", "")
-    #print(phonenumber)
-    print(type(phonenumber))
     length_phnum=len(phonenumber)
     defined_len1=9 #count of digits in phone numbers (in Armenia) started with number "0"
     defined_len2=12 #count of digits in phone numbers (in Armenia) started with number "+374"
@@ -50,9 +48,8 @@ def  is_phonenumber_validated(phonenumber):
             return True
          else:
             return False
-    else: 
-         
-         print("Please enter valid phone number")
+    else:
+         #print("Please enter valid phone number")
          return False
 
 
@@ -65,7 +62,7 @@ def is_email_validated(input_email):
     dot_symbol_i=input_email.find(".") 
     input_email=input_email.replace(" ","")
     if not input_email:
-       return
+        return
     min_len=3
     if dot_symbol_i>at_symbol_i:
        flag1=False            
@@ -140,62 +137,48 @@ def is_password_validated(input_password):
 
 def get_valid_username():
     """Gets input username and check if info was validated"""
-    while(True):
-        try:
-            input_username=input("Please enter username:")
-            if is_username_validated(input_username):
-               print("Validated username:", input_username)
-               return input_username
-            else:
-               print("Not validated, please try again")
-        except:
-            print("Please enter valid username")
+    input_username=input("Please enter username:")
+    if is_username_validated(input_username):
+       print("Validated username:", input_username)
+       return input_username
+    else:
+       raise Exception("Please enter correct username")
+     
            
 
 def get_valid_phonenumber():
-    """Gets input phonenumber and check if info was validated"""
-    while(True):
-        try:
-            input_phonenumber=input("Please enter your phone number: ")
-            if is_phonenumber_validated(input_phonenumber):
-               print("Validated phone number:",input_phonenumber)
-               return input_phonenumber
-            else:
-               print("Enter valid phone number in Armenia +374XXXXXX or 0XXXXXXXX")
-        except:
-            print("Enter valid phone number in Armenia +374XXXXXX or 0XXXXXXXX")
+     """Gets input phonenumber and check if info was validated"""
+     input_phonenumber=input("Please enter your phone number: ")
+     if is_phonenumber_validated(input_phonenumber):
+        print("Validated phone number:",input_phonenumber)
+        return input_phonenumber
+     else:
+        raise Exception("Enter valid phone number in Armenia +374XXXXXX or 0XXXXXXXX")
 
 def get_valid_email():
     """Gets input email and check if info was validated"""
-    while(True):
-        try: 
-            input_email=input("Please enter your email: ")
-            if is_email_validated(input_email):
-               print("Validated Email address:",input_email)
-               return input_email
-            else:
-               print("Enter valid Email address")
-        except:
-            print("Enter valid Email address")
+    input_email=input("Please enter your email: ")
+    if is_email_validated(input_email):
+       print("Validated Email address:",input_email)
+       return input_email
+    else:
+        raise Exception("Please enter valid email address")
+    
 
 def get_valid_password():
     """Gets input password and check if info was validated, if it was validated, then checks match of repeated password"""
-    while(True):
-        try: 
-            input_password=input("Please enter password: ")
-            if is_password_validated(input_password):
-               print("Validated Password:",input_password)
-               repeat_password=input("Please reenter your password: ")
+    input_password=input("Please enter password: ")
+    if is_password_validated(input_password):
+       print("Validated Password:",input_password)
+       repeat_password=input("Please reenter your password: ")
                #repeat validation
-               if(repeat_password==input_password):
-                   return input_password
-               else:
-                   print("Please try again")
-                   continue    
-            else:
-               print("Enter valid Password")
-        except:
-            print("Enter valid Email address")
+       if(repeat_password==input_password):
+           return input_password
+       else:
+           raise Exception("Enter correct repeat Password") 
+    else:
+       raise Exception("Enter valid Password")
+     
 
 def collect_info_of_the_user(input_username,input_phonenumber,input_email,input_password):
     """Collects info about one user"""
@@ -208,16 +191,40 @@ def collect_info_of_the_user(input_username,input_phonenumber,input_email,input_
 
 def main():
     #USERNAME
-    username=get_valid_username()
+    while(True):
+        try:
+           username=get_valid_username()
+           break
+        except Exception as e:
+           print('FAILED!'+ " " + str(e))
+            
     #PHONENUMBER
-    phonenumber=get_valid_phonenumber()
+    while(True):
+       try:
+          phonenumber=get_valid_phonenumber()
+          break
+       except Exception as e:
+          print('FAILED!'+ " " + str(e))
+    
     #EMAIL
-    email=get_valid_email()
+    while(True):
+       try:
+          email=get_valid_email()
+          break
+       except Exception as e:
+          print('FAILED!'+ " " + str(e))
+          
+
     #PASSWORD
-    password=get_valid_password()
+    while(True):
+       try:
+          password=get_valid_password()
+          break
+       except Exception as e:
+          print('FAILED!'+ " " + str(e))
 
     ls=collect_info_of_the_user(username,phonenumber,email,password)
-    print("Congratulations, you are registered")
+    print("_______Congratulations, you are registered\n")
     for i in ls:
         print(i)
 
