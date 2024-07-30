@@ -1,6 +1,6 @@
 import random
 
-def get_input():
+def get_input()->list[int]:
     """Gets input sizes for matrix, and creates matrix with random numbers"""
     print("Hello please enter equal values for m and n for further calculations(for square matrix)!")
     while (True):
