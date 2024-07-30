@@ -90,12 +90,12 @@ def initializeEmptymatrix(matrix:list[int])->list[int]:
         ls=[]
         empty_transposed.append(ls)
 
-    for j in empty_transposed:
-        for i in range(rows):
-            j.append(0)
+    for i in empty_transposed:
+        for j in range(rows):
+            i.append(0)
     return empty_transposed
 
-def tranposematrix(matrix:list[int], transposed:list[int])->list[int]:
+def tranposeMatrix(matrix:list[int], transposed:list[int])->list[int]:
     """Tranposes the given matrix"""
     rows = len(matrix)
     cols = len(matrix[0])
@@ -163,7 +163,7 @@ def main()->None:
     #Tranpose
     print("_______Transpose Matrix_______")
     empty_transposed=initializeEmptymatrix(matrix_lst)
-    tranposed=tranposematrix(matrix_lst,empty_transposed)
+    tranposed=tranposeMatrix(matrix_lst,empty_transposed)
     
     print("Initial matrix: \n")
     #printing matrix 
