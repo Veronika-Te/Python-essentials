@@ -64,6 +64,8 @@ def is_email_validated(input_email):
     at_symbol_i=input_email.find("@")
     dot_symbol_i=input_email.find(".") 
     input_email=input_email.replace(" ","")
+    if not input_email:
+       return
     min_len=3
     if dot_symbol_i>at_symbol_i:
        flag1=False            
