@@ -20,14 +20,13 @@ def is_username_validated(input_username):
         print("Please enter alphanumeric characters [A-Z],[a-z],[0-9]")
         return False
     elif input_username in reserved_words:
-            print("!!! Enter valid username which contains your name")
+         print("!!! Enter valid username which contains your name")
+         return False
     else:
-            return True
+         return True
 
 #TODO if inputusername in dictofusers search , in order to be unique
 #       try again
-
-
 
 def  is_phonenumber_validated(phonenumber):
     """Validates phonenumber"""
@@ -52,6 +51,7 @@ def  is_phonenumber_validated(phonenumber):
          else:
             return False
     else: 
+         
          print("Please enter valid phone number")
          return False
 
