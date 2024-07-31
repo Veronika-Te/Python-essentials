@@ -21,6 +21,7 @@ def main()->None:
      #iterable=(10,11,12,13,14,15)
      #iterable="hello"
      #iterable={'1': 'a', '2': 'b', '3':'c'}
+     #iterable=([1,2,3,4,5,6,7,8,9,20],[1,2,3])
      iterate_iterator(iterable)
      
 if __name__=="__main__":
