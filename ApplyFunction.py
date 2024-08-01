@@ -12,7 +12,7 @@ def apply_function(iterable, func:callable)->list:
     it=iter(iterable)
     result=[]
     for i in it:
-        result.append(powerOfTwo(i))
+        result.append(func(i))
     return result
 
 if __name__=="__main__":   
