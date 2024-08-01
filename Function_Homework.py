@@ -1,5 +1,5 @@
-"""Taking natural positive integer"""
 def get_positive_integer():
+    """Taking natural positive integer"""
     while(True):
         try:
             input_n=int(input("Please enter natural number: "))
@@ -8,11 +8,12 @@ def get_positive_integer():
         except:
             print("Please enter integer positive number")
 
-"""Taking input array from user"""
 def get_input_list():
+   """Taking input array from user"""
    while(True):
        try:
            lst = []
+           print("\n")
            str_res = input("Enter integer values for array(separated by space): ") 
            res=str_res.split(' ')
            for i in res:
@@ -20,10 +21,11 @@ def get_input_list():
                   lst.append(int(i))
            return lst  
        except:
-           print("Please enter integer positive number")
+           print("Please enter correct values for array(positive integers)")
 
-"""Taking input string from user"""
+
 def get_input_string():
+    """Taking input string from user"""
     while(True):
         try:
             input_str=input("Please enter sentence in order to find first uppercase letter: ")
@@ -33,33 +35,41 @@ def get_input_string():
             print("Please enter the sentence")
 
 #1
-"""This function prints 0-N(input number) natural numbers"""
 def print_natural_numbers(n):
+    """This function prints 0-N(input number) natural numbers"""
     print("Natural numbers(0-N): \n")
+    if not n:
+        return
     for i in range(n+1):
         print(i, end = " ")
     print(end="\n")
 
 #2
-"""This function prints N(input number)-0 natural numbers"""
 def print_reversed_natural_numbers(n):
+    """This function prints N(input number)-0 natural numbers"""
     print("Natural numbers(N-0): \n")
+    if not n:
+        return
     for num in range(n, -1, -1) : 
         print(num, end = " ")
     print(end="\n")
 
 
 #3
-"""This function returns elements of the given list"""
 def print_elements(input_ls):
+   """Returns elements of the given list"""
+   if not input_ls:
+       return " "
    res=""
    for i in input_ls:
        res=res + " " + str(i)
    return res
 
 #4
-"""This function return sum of digits of the given number"""
 def find_sum_of_digits(input_number):
+    """Returns sum of digits of the given number"""
+    if not input_number:
+        return
     s=str(input_number)
     sum_d=0
     for i in s:
@@ -68,8 +78,10 @@ def find_sum_of_digits(input_number):
     
         
 #5
-"""This function returns first uppercase letter"""
 def find_first_uppercase(input_str):
+    """Returns first uppercase letter"""
+    if not input_str:
+        return " "
     msg="There are no capitalized letter in the text"
     for char in input_str:
         if char.isupper():
@@ -77,8 +89,10 @@ def find_first_uppercase(input_str):
     return msg
 
 #6
-"""This fucntion return minimum value of the given list"""
 def find_min_of_list(input_ls):
+    """Returns minimum value of the given list"""
+    if not input_ls:
+        return 
     return min(input_ls)
 
 def actions_natural_numbers():
@@ -91,6 +105,7 @@ def actions_natural_numbers():
 
 def actions_with_digits():
     #4
+    print("For calculating sum of digits \n")
     input_number=get_positive_integer()
     res=find_sum_of_digits(input_number)
     if res:
@@ -130,25 +145,12 @@ def main():
  actions_with_list()
  #4
  print("-----")
- print("Sum of digits")
+ print("\n")
+ print("____Sum of digits___")
  actions_with_digits()
  #5
  actions_with_string()
 
 if __name__=="__main__":
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
