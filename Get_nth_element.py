@@ -1,5 +1,7 @@
-#Create a function named get_nth_element that takes an iterable and an integer n, and returns the n-th element from the iterable using iter() and next().
 def get_nth_element(iterable, number: int):
+    """Takes an iterable and an integer n, and returns the n-th element from the iterable using iter() and next()."""
+    if not iterable or not number:
+       return 
     it=iter(iterable)
     i=0
     while(True):
