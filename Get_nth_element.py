@@ -6,7 +6,7 @@ def get_nth_element(iterable, number: int):
         try:
             i+=1
             if number==i:
-               print(f"Position {number} ")
+               print(f"Position: {number} ")
                return (next(it))
             else:
                next(it)
@@ -17,5 +17,6 @@ def get_nth_element(iterable, number: int):
 if __name__=="__main__":           
         
  numbers=[1,2,3,4,89,511,655,7,78]
- res=get_nth_element(numbers, 6)
- print(f"Value {res}")
+ index=6
+ res=get_nth_element(numbers, index)
+ print(f"Value: {res}")
