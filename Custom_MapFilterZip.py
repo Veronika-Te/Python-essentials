@@ -23,7 +23,7 @@ def custom_map(operation: callable, *iterables)->list:
 
 #_________________Filter____________________
 
-def isEven(n):
+def isEven(n:int)->bool:
     if not n:
         return 0
     return n%2==0
