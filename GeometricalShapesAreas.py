@@ -91,6 +91,7 @@ def main()->None:
    print("Rectangle area")
    print(rectangle_area)
    #TODO add user input
+   
 if __name__=="__main__":
     main()
 
