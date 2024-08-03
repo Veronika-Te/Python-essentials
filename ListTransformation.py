@@ -1,10 +1,10 @@
-def sorting(lst):
+def sorting(lst)->list:
     if not lst:
         return [ ]
     lst.sort()
     return lst
     
-def reversing(lst):
+def reversing(lst)->list:
     if not lst:
         return [ ]
     return lst[::-1]
