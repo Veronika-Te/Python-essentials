@@ -1,13 +1,10 @@
-# Create a dictionary with various math 
-# functions (e.g., square, cube, square root, factorial). Write a function math_operations(number, operation) 
-# that uses this dictionary to apply the requested math function to a number.
 import math
-
 
 def square(num):
     if not num:
        return 0 
     return num**2
+    
 def cube(num):
     if not num:
        return 0 
