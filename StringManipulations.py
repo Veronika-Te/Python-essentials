@@ -62,7 +62,7 @@ def get_input()->str:
         except:
             print("Enter valid word")
 
-def main(): 
+def main()->None: 
     
     input_str=get_input()
     print("String Manipulations")
