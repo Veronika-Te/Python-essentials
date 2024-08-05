@@ -35,8 +35,6 @@ def find_standart_deviation(lst):
        return 0
     return statistics.pstdev(lst)
 
-
-lst= [1, 2, 3, 4, 5] 
 def analyze_data(data, operation):
     """ Performs statistical analysis on a list of numbers."""
     
