@@ -42,6 +42,7 @@ def replace_word(text:str, **words:str)->str:
     return replaced       
 
 def get_keys(dictionary):
+    """Creates set with keys of the given dictionary"""
     if not dictionary: 
        return
     return set(dictionary.keys())
