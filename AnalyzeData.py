@@ -47,16 +47,16 @@ def analyze_data(data, operation):
         if operation in operations:
             if operation=="Mean":
                mean=analyze_tool.get(operation)
-               return find_mean(data)
+               return mean(data)
             elif operation=="Median":
                median=analyze_tool.get(operation)
-               return find_median(data) 
+               return median(data) 
             elif operation=="Mode":
                mode=analyze_tool.get(operation)
-               return find_mode(data)  
+               return mode(data)  
             elif operation=="SD":
-               mode=analyze_tool.get(operation)
-               return find_standart_deviation(data) 
+               sd=analyze_tool.get(operation)
+               return sd(data) 
             else:
                return 0
         else:
