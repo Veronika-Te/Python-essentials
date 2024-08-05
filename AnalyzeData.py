@@ -35,8 +35,6 @@ def find_standart_deviation(lst):
        return 0
     return statistics.pstdev(lst)
 
-
-lst= [1, 2, 3, 4, 5] 
 def analyze_data(data, operation):
     """ Performs statistical analysis on a list of numbers."""
     
@@ -48,16 +46,16 @@ def analyze_data(data, operation):
     if (isinstance(data, (list))):
         if operation in operations:
             if operation=="Mean":
-               mean=analyze_tool.get('Mean')
+               mean=analyze_tool.get(operation)
                return find_mean(data)
             elif operation=="Median":
-               median=analyze_tool.get('Median')
+               median=analyze_tool.get(operation)
                return find_median(data) 
             elif operation=="Mode":
-               mode=analyze_tool.get('Mode')
+               mode=analyze_tool.get(operation)
                return find_mode(data)  
             elif operation=="SD":
-               mode=analyze_tool.get('Mode')
+               mode=analyze_tool.get(operation)
                return find_standart_deviation(data) 
             else:
                return 0
@@ -69,7 +67,7 @@ def analyze_data(data, operation):
 def main():  
      print("Statistics")
      #lst= [1, -2, -3,-3, -4, -5,5,5,-5,5]
-     lst= [1,2,3,4,4,5,8]
+     lst= [1,2,3,4,4,5,8,8,8,8]
      print(lst)
      #Mean
      mean=analyze_data(lst, "Mean")
