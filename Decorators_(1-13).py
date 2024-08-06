@@ -8,7 +8,6 @@ print(another(3,7)(3,7))
 def make_adder(n=0):
     """Returns a function that adds n to its argument."""
     def func():
-        nonlocal n
         print(n+n)
     return func
 
@@ -32,7 +31,6 @@ print(d)
 # that returns a function which raises its argument to the power of n.
 def power_factory(n):
     def pow():
-        nonlocal n
         return (n ** n)
     return pow 
 
