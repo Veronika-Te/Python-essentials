@@ -138,6 +138,16 @@ res(3)
 res(3)
 res(4)
 
+#@make_memoize1
+#def add_2(x):
+#    if not x:
+#        return
+#   return x+2
+
+#add_2(2)
+#add_2(4)
+#add_2(8)
+
 # Write a function bar(n) that returns a list of functions. 
 # Each function should be created by a nested closure and should multiply its argument by the corresponding index. Verify the closures by inspecting their __closure__ attributes.
 #undone
