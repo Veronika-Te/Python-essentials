@@ -11,7 +11,6 @@ def make_adder(n=0):
         print(n+n)
     return func
 
-
 #Write a function compose(f, g) 
 #that returns a new function which is the composition of the functions f and g.
 def f(str):
