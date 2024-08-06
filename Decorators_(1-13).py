@@ -116,7 +116,27 @@ print(m())
 
 #Implement a function make_memoize(f) that takes a function f and returns a 
 # #memoized version of f which caches results to avoid redundant computations.
-#undone
+def calculate_square1(x):
+    if not x:
+       return
+    return x**2 
+
+def make_memoize1(func):
+    cache={}
+    def inner(x):
+        if x not in cache:
+           cache[x]=func(x)
+           print(cache)
+        else: 
+            return cache[x]
+    return inner
+res=make_memoize1(calculate_square1)
+print("Make memoize")
+print("Checking cache")
+res(2)
+res(3)
+res(3)
+res(4)
 
 # Write a function bar(n) that returns a list of functions. 
 # Each function should be created by a nested closure and should multiply its argument by the corresponding index. Verify the closures by inspecting their __closure__ attributes.
