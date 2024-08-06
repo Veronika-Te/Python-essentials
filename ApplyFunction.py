@@ -1,3 +1,4 @@
+from typing import Iterable
 def powerOfTwo(number:int)->int:
     """Gets the number,and returns number's power of two"""
     if not number:
@@ -5,7 +6,7 @@ def powerOfTwo(number:int)->int:
     number=number**2
     return number
 
-def apply_function(iterable, func:callable)->list:
+def apply_function(iterable: Iterable, func:callable)->list:
     """Applies the function to each element of the iterable, returning a list of the results."""
     if not iterable or not func:
         return []
@@ -15,7 +16,10 @@ def apply_function(iterable, func:callable)->list:
         result.append(func(i))
     return result
 
+def main()->None:
+   numbers=[1,2,34,4,5]
+   res=apply_function(numbers, powerOfTwo)
+   print(res)
+
 if __name__=="__main__":   
- numbers=[1,2,34,4,5]
- res=apply_function(numbers, powerOfTwo)
- print(res)
+   main()
