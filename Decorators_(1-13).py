@@ -15,8 +15,6 @@ def make_adder(n=0):
 
 #Write a function compose(f, g) 
 #that returns a new function which is the composition of the functions f and g.
-
-
 def f(str):
     return(str + "  " + "and I'm f ")
 def g():
@@ -32,7 +30,6 @@ print(d)
 
 # Implement a function power_factory(n) 
 # that returns a function which raises its argument to the power of n.
-
 def power_factory(n):
     def pow():
         nonlocal n
