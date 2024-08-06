@@ -1,6 +1,8 @@
 # # Create a lambda function that returns another 
 # # lambda function which multiplies its argument by a given factor.
-# # undone
+another=lambda x, n : lambda x, n: x *n
+print("Result of lambda that return another lambda: ")
+print(another(3,7)(3,7))
 
 #Write a function make_adder(n) that returns a function that adds n to its argument.
 def make_adder(n=0):
