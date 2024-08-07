@@ -118,22 +118,44 @@ def calculate_square1(x):
        return
     return x**2 
 
-def make_memoize1(func):
-    cache={}
-    def inner(x):
-        if x not in cache:
-           cache[x]=func(x)
-           print(cache)
-        else: 
-            return cache[x]
+def make_memoize_args(func):
+    """Caches results to avoid redundant computations"""
+    cache = {}
+    def inner(*args):
+        if args not in cache:
+            cache[args] = func(*args)
+            print(cache)
+        return cache[args]
     return inner
-res=make_memoize1(calculate_square1)
-print("Make memoize")
+
+@make_memoize_args
+def add_2(x):
+   if not x:
+       return
+   return x+2
+print("Memoization")
 print("Checking cache")
-res(2)
-res(3)
-res(3)
-res(4)
+add_2(2)
+add_2(4)
+add_2(8)
+print("\n")
+
+# def make_memoize1(func):
+#     cache={}
+#     def inner(x):
+#         if x not in cache:
+#            cache[x]=func(x)
+#            print(cache)
+#         else: 
+#             return cache[x]
+#     return inner
+# res=make_memoize1(calculate_square1)
+# print("Make memoize")
+# print("Checking cache")
+# res(2)
+# res(3)
+# # res(3)
+# res(4)
 
 #@make_memoize1
 #def add_2(x):
