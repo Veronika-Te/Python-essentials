@@ -8,7 +8,7 @@ def read_file_count_characters(file_name:str)->int:
        splitted=text.split()
        if not splitted:
           return 0
-       #Counts charachters in string 
+       #Counts characters in string 
        count=0
        for i in splitted:
            count+=len(i)
