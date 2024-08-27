@@ -224,6 +224,7 @@ def custom_filter(fn, iterable):
         for item in iterable:
             if item == True:
                yield item
+        return
      else:
         for item in iterable:
             if fn(item):
