@@ -17,7 +17,7 @@ class Employee:
         else:
            raise ValueError("Please enter positive value")
     
-    def __repr__(self):
+    def __str__(self):
         return f"Name: {self.__name}, Salary:{self.__salary}"
         
 if __name__=="__main__":
@@ -26,6 +26,6 @@ if __name__=="__main__":
     name="Mary"
     salary=Decimal(2334)
     emp=Employee(emp_id,name,salary )
-    print(repr(emp))
+    print(str(emp))
             
         
