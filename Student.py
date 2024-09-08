@@ -46,18 +46,23 @@ class Student:
     
     def __str__(self):
         return f"Student:{self.__name}, RollNumber:{self.__rollnumber}, Grades:{self.__grades}"
-    
+
+def main():
+    name="Syuzan"
+    roll_num=1
+    grades=[1,2,3,99]
+    stu=Student(name, roll_num,grades)
+    print(str(stu))
+   
+    # calculate average
+    res=stu.calculate_avg()
+    print(f"Average of grades:{res}")
+   
+    stu.addGrades(7)
+    print("Grades after changes")
+    print(stu.getGrades()) 
+
+
 if __name__=="__main__":
+   main()
    
-   name="Syuzan"
-   roll_num=1
-   grades=[1,2,3,99]
-   stu=Student(name, roll_num,grades)
-   print(str(stu))
-   
-   #calculate average
-   res=stu.calculate_avg()
-   print(f"Average of grades:{res}")
-   
-   stu.addGrades(7)
-   print(stu.getGrades())
