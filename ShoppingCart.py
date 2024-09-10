@@ -2,12 +2,12 @@
 #Implement methods to add an item, remove an item, and display the total number of items in the cart. Each item should have a name and price.
 
 from decimal import Decimal
-class ShoppinCart:   
+class ShoppingCart:   
    def __init__(self, items=None):
        if items is None:
           self.__items=[]
        else:
-           self.setItem()
+           self.setItem([items])
            
    def getItem(self):
        return self.__items
@@ -29,6 +29,7 @@ class ShoppinCart:
    def __str__(self):
        if not self.__items:
           return "Shopping cart is empty"
+
        items_str="\n".join(str(item) for item in self.__items)
        return f"Shopping cart:\n{items_str}"
        
@@ -53,8 +54,8 @@ class ShoppinCart:
 
 class Item:
     def __init__(self,name:str, price:Decimal):
-        self.setName()
-        self.setPrice()
+        self.setName(name)
+        self.setPrice(price)
         
     def getName(self):
         return self.__name
@@ -86,16 +87,18 @@ def main():
     price1=Decimal(5)
     price2=Decimal(4)
     price3=Decimal(78)
-    item1=Item("item1", price1 )
+    item1=Item("item1", price1)
     item2=Item("item2",price2)
     item3=Item("item3",price3)
     
     #Creating shopping cart
-    cart=ShoppinCart(item1)
+    cart=ShoppingCart()
+    
+    cart.add(item1)
     cart.add(item2)
     cart.add(item3)
     print(str(cart))
-    #Removing item
+   #Removing item
     cart.remove_item(item2)
     print(str(cart))
     #Display total number
