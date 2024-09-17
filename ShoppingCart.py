@@ -4,17 +4,14 @@
 from decimal import Decimal
 class ShoppingCart:   
    def __init__(self, items=None):
-       if items is None:
-          self.__items=[]
-       else:
-           self.setItem([items])
+        self.setItem([items])
            
    def getItem(self):
        return self.__items
    
    def setItem(self,items):
        if items is None:
-           raise ValueError("Empty item")
+           self.__items=[]
        if not items or not isinstance(items,list):
            raise ValueError("Empty item")
        else:
