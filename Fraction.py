@@ -44,7 +44,7 @@ class Fraction:
     
     def __repr__(self) -> str:
         """Returns an unambiguous string representation suitable for debugging"""
-        return f"Fraction({self.getNumerator()}/{self.getDenominator()})"
+        return f"{self.__class__.__name__} ({self.getNumerator()!r}/{self.getDenominator()!r}) ".format(self)
     
     #Simplify
     def simplifyFraction(self)->None:
