@@ -55,17 +55,17 @@ class DynamicArray():
             yield self.arr1[i]
             
     def __repr__(self)->str:
+        """Returns a string representation suitable for debugging"""
         if not self.arr1:
             return "Empty Array"
-        return f"Dynamic Array {[x for x in self]}"
+        return f"{self.__class__.__name__}{[x for x in self]!r}".format(self)
         
         
     def __str__(self)->str:
+        """Returns a user-friendly string representation"""
         if not self.arr1:
             return "Empty Array"
         return f"{[x for x in self]}"
-    
-
     
     def __eq__(self, other):
         """Checks if they are equal"""
@@ -100,8 +100,9 @@ def main()->None:
     #iterate
     for item in arr:
         print(item)
-    print(str(arr))
-    print(repr(arr))
+        
+    print(f"string : {str(arr)}")
+    print(f"repr : {repr(arr)}")
     
     arr2.append(3)
     arr2.append(4)
