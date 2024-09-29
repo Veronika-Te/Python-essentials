@@ -361,21 +361,9 @@ class MixedFraction(Fraction):
 
 
 
-
-def main()->None:
-    print("-----------------Fractions-----------------")
-    
-    print("--------------String Representation--------------")
-    f1= Fraction(1,7)
-    print(f"__str__ : {str(f1)}")
-    print(f"__repr__: {repr(f1)}")
-    
-    # f1.simplifyFraction()
-    # print(str(f1))
-    f2 = Fraction(3,7)
-    
-
-
+#Functions for printing, which will be called in main function
+def print_and_check_arithmetic_operations(f1,f2)->None:
+    """Prints and checks arithmetic operations"""
     print("--------------Arithmetic Operations---------")
     #Addition
     print("\nAddition")
@@ -400,8 +388,8 @@ def main()->None:
     print("\nDivision")
     print(f"{str(f1)} / {str(f2)} =  {f1/f2}")
     
-
-
+def print_and_check_rich_comparisons(f1,f2,f7):
+    """Prints and checks rich comparisons"""
     print("\n--------------Rich comparisons--------------")
     print("\nEquality")
     #equality    
@@ -418,16 +406,13 @@ def main()->None:
        
     #Comparison
     print("\nChecking Less than(<)")
-    f7=Fraction(0,6)
+    
     check_int=7
     print(f"{f1}<{f2}=>{f1<f2}") 
     print(f"{f7}<{f2}=>{f7<f2}")
 
-       
     print("\nChecking Greater than(>)")
     print(f" {f1}>{f2} => {f1>f2}")
-    
- 
     
     print("\nChecking less than or equal to (<=)")
     print(f"{f1}<={f2}=> {f1<=f2}")
@@ -438,34 +423,34 @@ def main()->None:
     print(f"{f1}>={f2}=> {f1>=f2}")
     print(f"{f1}>={check_int}=>{f1>=f2}")
     print(f"{f1}>={f1}=>{f1>=f1}")
-    
 
-    print("--------------Hashing Support--------------") 
+def print_and_check_hashing(f1,f3)->None:
+    """Prints and checks hashing"""
+    print("\n--------------Hashing Support--------------") 
     print("\nHashing")
     #Hashing
     print(f"f1: {repr(f1)} ")
-    
     print(f"Hash code for fraction {f1} : {(hash(f1))}")
     #Ensure that equivalent fractions have the same hash value.
     #Checking..
-    f3=Fraction(2,7)
+    
     print(f"f3: {repr(f3)}")
     print(f"Hash code for fraction {f3} : {(hash(f3))}")
     if hash(f1)==hash(f3):
         print("Equivalent fractions have the same hash value.")
         
-    print("\n--------------Additional methods--------------")
-    
+def print_and_check_additionalmethods(f4)->None:
+    """Prints and checks additional methods"""
+    print("\n--------------Additional methods--------------\n")
     #Cast to float
-    f4=Fraction(89,7) 
-    
     print(f"Cast to float {float(f4)}")
     #Cast to int(truncate)
     print(f"Conversion to integer (truncating towards zero): {int(f4)}")
     #Unary negation
     print(f"UnaryNegation: {-f4}")
     
-
+def print_and_check_in_place_operations(f1,f2)->None:
+    """Prints and checks in-place operations"""
     #+=
     print("in-place arithmetic methods ")
     print(str(f1))
@@ -489,13 +474,40 @@ def main()->None:
     f1-=x
     print(f1)
 
+        
+   
+
+
+def main()->None:
+    print("-----------------Fractions-----------------")
+    
+    print("--------------String Representation--------------")
+    f1= Fraction(1,7)
+    print(f"__str__ : {str(f1)}")
+    print(f"__repr__: {repr(f1)}")
+    
+    # f1.simplifyFraction()
+    # print(str(f1))
+    f2 = Fraction(3,7)
+    f3=Fraction(2,7)
+    f4=Fraction(89,7) 
+    f7=Fraction(0,6)
+
+    #Arithmetic Operations
+    print_and_check_arithmetic_operations(f1,f2)
+    #Rich comparisons
+    print_and_check_rich_comparisons(f1,f2,f7)
+    #Hashing Support
+    print_and_check_hashing(f1,f3)
+    #Additional Methods
+    print_and_check_additionalmethods(f4)
+    #In-place Operations
+    print_and_check_in_place_operations(f1,f2)
+
     #Creating mixed fraction
     mx_f=MixedFraction(1,2,4)
-    print("\nMixed Fraction")
+    print("\n--------------Mixed Fraction--------------")
     print(str(mx_f))
-
-        
-
 
 if __name__ == "__main__":
    main()
