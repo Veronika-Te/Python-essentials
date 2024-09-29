@@ -10,6 +10,7 @@ class Fraction:
         self.setNumerator(numerator)
         self.setDenominator(denominator)
         self.simplifyFraction()
+        self._is_hashed = False  # Track if the object has been hashed
     
     def getNumerator(self):
         return self.__numerator
@@ -159,11 +160,38 @@ class Fraction:
                 return True
             else:
                 return False
-    #TODO
-    """Less than: __lt__(self, other)
-Less than or equal to: __le__(self, other)
-Greater than: __gt__(self, other)
-Greater than or equal to: __ge__(self, other)"""        
+            
+   
+        
+#     #TODO
+# """Less than: __lt__(self, other)
+    def __lt__(self, other)->bool:
+        if not other:
+            return False
+        if isinstance(other, Fraction):
+            if self.getDenominator()==other.getDenominator():
+               if self.getNumerator() < other.getNumerator():
+                   return True
+               else:
+                   return False
+            else:
+                if (self.getNumerator() * other.getDenominator()) < (other.getNumerator()*self.getDenominator()):
+                   return True
+                else:
+                   return False
+        elif isinstance(other, int):
+            new_denominator=1
+            new_fraction=Fraction(other, new_denominator) #creating Fraction with denominator =1
+            if (self.getNumerator() * new_fraction.getDenominator()) < (new_fraction.getNumerator()*self.getDenominator()):
+                return True
+            else:   
+                return False
+        else:
+            raise ValueError("Given value is Invalid for comparison with Fraction")
+        
+# Less than or equal to: __le__(self, other)
+# Greater than: __gt__(self, other)
+# Greater than or equal to: __ge__(self, other)"""        
     #Hashing
     def __hash__ (self)->int:
         """ Extracts Hash code to allow fractions to be used in sets and as dictionary keys."""
@@ -171,6 +199,9 @@ Greater than or equal to: __ge__(self, other)"""
         d=self.getDenominator()
         if self.isNull():
            return 0 
+        #check if was hashed in the past or not 
+        if not self._is_hashed:
+           self._is_hashed=True # Track if the object has been hashed
         return hash((n,d)) 
     
     #Additional Methods
@@ -236,16 +267,13 @@ Greater than or equal to: __ge__(self, other)"""
         else:
             raise ValueError("Not valid operand")
        
-       
-    
-    """TODO:
-    Optional Advanced Features
-    
-Immutability
-Use @dataclass(frozen=True) from the dataclasses module to make Fraction instances immutable.
+# TODO:
+# Optional Advanced Features    
+# Immutability
+# Use @dataclass(frozen=True) from the dataclasses module to make Fraction instances immutable.
 
-Augmented Assignment
-Support augmented assignment operations (e.g., fraction1 += fraction2)."""
+# Augmented Assignment
+# Support augmented assignment operations (e.g., fraction1 += fraction2).
 
 class MixedFraction(Fraction):
      def __init__(self, numerator:int, denominator:int, whole_part:int ):
@@ -267,8 +295,12 @@ class MixedFraction(Fraction):
          return f"{self.__whole_part} {self.getNumerator()}/{self.getDenominator()}"
 
 
+
+
 def main()->None:
-    print("Fractions")
+    print("-----------------Fractions-----------------")
+    
+    print("--------------String Representation--------------")
     f1= Fraction(1,7)
     print(f"__str__ : {str(f1)}")
     print(f"__repr__: {repr(f1)}")
@@ -277,6 +309,9 @@ def main()->None:
     # print(str(f1))
     f2 = Fraction(3,7)
     
+
+
+    print("--------------Arithmetic Operations---------")
     #Addition
     print("\nAddition")
     i=5
@@ -300,6 +335,9 @@ def main()->None:
     print("\nDivision")
     print(f"{str(f1)} / {str(f2)} =  {f1/f2}")
     
+
+
+    print("\n--------------Rich comparisons--------------")
     print("\nEquality")
     #equality    
     if f1==f2:
@@ -313,7 +351,20 @@ def main()->None:
     else:
        print(f"False,{str(f1)} equal to {str(f2)}")    
        
-    f3=Fraction(2,7)
+    #Comparison
+    print("Less than")
+    if f1<f2:
+        print(f"TRUE: {f1}<{f2}")
+    else:
+        print (f"FALSE: {f1}<{f2}")
+       
+    print("Checking Greater than(>)")
+    print(f" {f1}>{f2} => {f1>f2}")
+    
+    print(f1<f1)
+    
+
+    print("--------------Hashing Support--------------") 
     print("\nHashing")
     #Hashing
     print(f"f1: {repr(f1)} ")
@@ -321,14 +372,17 @@ def main()->None:
     print(f"Hash code for fraction {f1} : {(hash(f1))}")
     #Ensure that equivalent fractions have the same hash value.
     #Checking..
+    f3=Fraction(2,7)
     print(f"f3: {repr(f3)}")
     print(f"Hash code for fraction {f3} : {(hash(f3))}")
     if hash(f1)==hash(f3):
         print("Equivalent fractions have the same hash value.")
         
-    print("\nAdditional methods")
+    print("\n--------------Additional methods--------------")
+    
     #Cast to float
-    f4=Fraction(89,7)    
+    f4=Fraction(89,7) 
+    
     print(f"Cast to float {float(f4)}")
     #Cast to int(truncate)
     print(f"Conversion to integer (truncating towards zero): {int(f4)}")
