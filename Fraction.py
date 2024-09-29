@@ -167,7 +167,9 @@ class Fraction:
 # """Less than: __lt__(self, other)
     def __lt__(self, other)->bool:
         if not other:
-            return False
+           return False
+        if self.isNull():
+           return False 
         if isinstance(other, Fraction):
             if self.getDenominator()==other.getDenominator():
                if self.getNumerator() < other.getNumerator():
@@ -352,13 +354,13 @@ def main()->None:
        print(f"False,{str(f1)} equal to {str(f2)}")    
        
     #Comparison
-    print("Less than")
-    if f1<f2:
-        print(f"TRUE: {f1}<{f2}")
-    else:
-        print (f"FALSE: {f1}<{f2}")
+    print("\nChecking Less than(<)")
+    f7=Fraction(0,6)
+    print(f"{f1}<{f2}=>{f1<f2}") 
+    print(f"{f7}<{f2}=>{f7<f2}")
+
        
-    print("Checking Greater than(>)")
+    print("\nChecking Greater than(>)")
     print(f" {f1}>{f2} => {f1>f2}")
     
     print(f1<f1)
