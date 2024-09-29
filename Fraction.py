@@ -160,12 +160,9 @@ class Fraction:
                 return True
             else:
                 return False
-            
-   
-        
-#     #TODO
-# """Less than: __lt__(self, other)
+
     def __lt__(self, other)->bool:
+        """Checks if the given fraction is less than another fraction (or integer)"""
         if not other:
            return False
         if self.isNull():
@@ -190,10 +187,75 @@ class Fraction:
                 return False
         else:
             raise ValueError("Given value is Invalid for comparison with Fraction")
+
+    def __gt__(self,other)->bool:
+        """Checks if the given fraction is greater than another fraction (or integer)"""
+        if not other:
+           return False
+        if self.isNull():
+           return False 
+        if isinstance(other, Fraction):
+            if self.getDenominator()==other.getDenominator():
+               if self.getNumerator() > other.getNumerator():
+                   return True
+               else:
+                   return False
+            else:
+                if (self.getNumerator() * other.getDenominator()) > (other.getNumerator()*self.getDenominator()):
+                   return True
+                else:
+                   return False
+        elif isinstance(other, int):
+            new_denominator=1
+            new_fraction=Fraction(other, new_denominator) #creating Fraction with denominator =1
+            if (self.getNumerator() * new_fraction.getDenominator()) > (new_fraction.getNumerator()*self.getDenominator()):
+                return True
+            else:   
+                return False
+        else:
+            raise ValueError("Given value is Invalid for comparison with Fraction")
+    
+         
+    def __le__(self, other):
+        """Checks if the given fraction is less than or equal to another fraction (or integer)"""
+        if not other:
+           return False
+        if self.isNull():
+           return False 
+        if isinstance(other, Fraction):
+           # Compare two fractions
+           left_side = self.getNumerator() * other.getDenominator()
+           right_side = other.getNumerator() * self.getDenominator()
+           return left_side <= right_side
+        elif isinstance(other, int):
+            denominator=1
+            left_side = self.getNumerator() * denominator
+            right_side = other * self.getDenominator()
+            return left_side <= right_side
+        else:
+           raise ValueError("Given value is Invalid for comparison with Fraction")
+       
+    
+    def __ge__(self,other):
+        """Checks if the given fraction is greater than or equal to another fraction (or integer)"""
+        if not other:
+           return False
+        if self.isNull():
+           return False 
+        if isinstance(other, Fraction):
+           # Compare two fractions
+           left_side = self.getNumerator() * other.getDenominator()
+           right_side = other.getNumerator() * self.getDenominator()
+           return left_side >= right_side
+        elif isinstance(other, int):
+            denominator=1
+            left_side = self.getNumerator() * denominator
+            right_side = other * self.getDenominator()
+            return left_side >= right_side
+        else:
+           raise ValueError("Given value is Invalid for comparison with Fraction")
         
-# Less than or equal to: __le__(self, other)
-# Greater than: __gt__(self, other)
-# Greater than or equal to: __ge__(self, other)"""        
+            
     #Hashing
     def __hash__ (self)->int:
         """ Extracts Hash code to allow fractions to be used in sets and as dictionary keys."""
@@ -221,8 +283,9 @@ class Fraction:
         int_fraction=math.trunc((self.getNumerator()) / (self.getDenominator()))
         return int_fraction
         
-    #Implement __neg__ for unary negation (e.g., -fraction)."""
+
     def __neg__(self)->Fraction:
+        """Unary negation (e.g., -fraction)."""
         if self.isNull():
            return 0
         return Fraction(-self.getNumerator(), self.getDenominator())
@@ -356,6 +419,7 @@ def main()->None:
     #Comparison
     print("\nChecking Less than(<)")
     f7=Fraction(0,6)
+    check_int=7
     print(f"{f1}<{f2}=>{f1<f2}") 
     print(f"{f7}<{f2}=>{f7<f2}")
 
@@ -363,7 +427,17 @@ def main()->None:
     print("\nChecking Greater than(>)")
     print(f" {f1}>{f2} => {f1>f2}")
     
-    print(f1<f1)
+ 
+    
+    print("\nChecking less than or equal to (<=)")
+    print(f"{f1}<={f2}=> {f1<=f2}")
+    print(f"{f1}<={check_int}=>{f1<=f2}")
+    print(f"{f1}<={f1}=>{f1<=f1}")
+    
+    print("\nChecking greater than or equal to(>=)")
+    print(f"{f1}>={f2}=> {f1>=f2}")
+    print(f"{f1}>={check_int}=>{f1>=f2}")
+    print(f"{f1}>={f1}=>{f1>=f1}")
     
 
     print("--------------Hashing Support--------------") 
