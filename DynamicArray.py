@@ -4,13 +4,23 @@ DynamicArray=TypeVar("DynamicArray", bound="DynamicArray")
  
 class DynamicArray():
     
-    def __init__(self)-> None:
-        #TODO add encapsulation
-        self.n = 0 # Count actual elements (Default is 0) #?
-        self.capacity = 10 # Default Capacity
-        self.arr1 = self._make_array(self.capacity) #Array which stores elements
+    def __init__(self,value:int=10)-> None:
+        self.n = 0 # Count actual elements (Default is 0) 
+        self.setCapacity(value) # Default Capacity
+        self.arr1 = self._make_array(self.getCapacity()) #Array which stores elements
         self._is_hashed = False  # Track if the object has been hashed
-       
+        
+    def getCapacity(self):
+        return self.__capacity
+    def setCapacity(self, value=10):
+        if value>0:
+           if isinstance(value,int):
+               self.__capacity=value
+           else:
+            raise TypeError("Not valid capacity")
+        else:
+            raise ValueError("Not valid capacity")
+    
     def _resize(self, new_capacity:int):
         """ Resizes internal array to new capacity (bigger array), references all existing values """
         arr2 = self._make_array(new_capacity)  
@@ -19,7 +29,7 @@ class DynamicArray():
             arr2[i] = self.arr1[i]
  
         self.arr1 =  arr2 # Call A the new bigger array
-        self.capacity = new_capacity  # Reset the capacity  
+        self.setCapacity(new_capacity)  # Reset the capacity  
     
     def _make_array(self, new_capacity:int): 
         """Method for internal use. Creates a low-level array"""
@@ -55,9 +65,9 @@ class DynamicArray():
     
     def append(self, element):
         """ Appends element to the of the list and resizes the capacity if it is needed"""
-        if self.n == self.capacity:
+        if self.n == self.getCapacity():
             # Resize the array
-            self._resize(2 * self.capacity)
+            self._resize(2 * self.getCapacity())
         self.arr1[self.n] = element #[length]
         self.n += 1 #size + 1
         
@@ -218,7 +228,7 @@ def main()->None:
     arr = DynamicArray()
     arr2= DynamicArray()
     
-    print("Initial capacity:", arr.capacity)
+    print("Initial capacity:", arr.getCapacity())
     
     arr.append(3)
     arr.append(4)
