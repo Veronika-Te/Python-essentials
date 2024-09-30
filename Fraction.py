@@ -81,7 +81,7 @@ class Fraction:
            new_denominator=self.getDenominator()
            return Fraction(new_numerator,new_denominator)
         else:
-            raise ValueError ("Not valid value to add")
+            raise TypeError ("Not valid value to add")
            
     def __sub__(self, other):
         """Returns result of subtraction"""
@@ -96,7 +96,7 @@ class Fraction:
            new_denominator=self.getDenominator()
            return Fraction(new_numerator,new_denominator)
         else:
-            raise ValueError ("Not valid value to substract")
+            raise TypeError ("Not valid value to substract")
 
     def __mul__(self,other)-> Fraction:
         """Returns result of multipication. Fraction type multiply with Fraction type or integer type"""
@@ -110,7 +110,7 @@ class Fraction:
         elif other==0:
            return 0 
         else:
-            raise ValueError("Not valid multiplier")
+            raise TypeError("Not valid multiplier")
      
     def __truediv__(self, other):
         """Returns result of division."""
@@ -124,7 +124,7 @@ class Fraction:
            new_denominator=self.getDenominator() * other
            return Fraction(self.getNumerator(), new_denominator) 
         else:
-            raise ValueError("Not valid divider")
+            raise TypeError("Not valid divider")
         
     #Rich Comparison Methods
     #Equal
@@ -181,10 +181,9 @@ class Fraction:
             new_fraction=Fraction(other, new_denominator) #creating Fraction with denominator =1
             if (self.getNumerator() * new_fraction.getDenominator()) < (new_fraction.getNumerator()*self.getDenominator()):
                 return True
-            else:   
-                return False
+            return False
         else:
-            raise ValueError("Given value is Invalid for comparison with Fraction")
+            raise TypeError("Given value is Invalid for comparison with Fraction")
 
     def __gt__(self,other)->bool:
         """Checks if the given fraction is greater than another fraction (or integer)"""
@@ -201,17 +200,15 @@ class Fraction:
             else:
                 if (self.getNumerator() * other.getDenominator()) > (other.getNumerator()*self.getDenominator()):
                    return True
-                else:
-                   return False
+                return False
         elif isinstance(other, int):
             new_denominator=1
             new_fraction=Fraction(other, new_denominator) #creating Fraction with denominator =1
             if (self.getNumerator() * new_fraction.getDenominator()) > (new_fraction.getNumerator()*self.getDenominator()):
                 return True
-            else:   
-                return False
+            return False
         else:
-            raise ValueError("Given value is Invalid for comparison with Fraction")
+            raise TypeError("Given value is Invalid for comparison with Fraction")
     
          
     def __le__(self, other):
@@ -231,7 +228,7 @@ class Fraction:
             right_side = other * self.getDenominator()
             return left_side <= right_side
         else:
-           raise ValueError("Given value is Invalid for comparison with Fraction")
+           raise TypeError("Given value is Invalid for comparison with Fraction")
        
     
     def __ge__(self,other):
@@ -251,7 +248,7 @@ class Fraction:
             right_side = other * self.getDenominator()
             return left_side >= right_side
         else:
-           raise ValueError("Given value is Invalid for comparison with Fraction")
+           raise TypeError("Given value is Invalid for comparison with Fraction")
         
             
     #Hashing
@@ -308,8 +305,7 @@ class Fraction:
            self.simplifyFraction()
            return self
         else:
-            raise ValueError("Not valid operand")
-      
+            raise TypeError("Not valid operand")
     
     def __isub__(self,other):
         """Supporting -= """
@@ -328,15 +324,11 @@ class Fraction:
            self.simplifyFraction()
            return self
         else:
-            raise ValueError("Not valid operand")
+            raise TypeError("Not valid operand")
        
 # TODO:
-# Optional Advanced Features    
-# Immutability
-# Use @dataclass(frozen=True) from the dataclasses module to make Fraction instances immutable.
-
 # Augmented Assignment
-# Support augmented assignment operations (e.g., fraction1 += fraction2).
+# Support augmented assignment operations (e.g., fraction1 += fraction2).?
 
 class MixedFraction(Fraction):
      def __init__(self, numerator:int, denominator:int, whole_part:int ):
@@ -352,7 +344,7 @@ class MixedFraction(Fraction):
          if isinstance(wh_part,int):
             self.__whole_part=wh_part
          else:
-             raise ValueError("Invalid whole part")
+             raise TypeError("Invalid whole part")
      
      def __str__(self):
          return f"{self.__whole_part} {self.getNumerator()}/{self.getDenominator()}"
