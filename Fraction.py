@@ -77,9 +77,8 @@ class Fraction:
            new_denominator=self.getDenominator()*other.getDenominator()
            return Fraction(new_numerator,new_denominator)
         elif isinstance(other, int):
-           new_Fraction=Fraction(other, 1)
-           new_numerator=(self.getNumerator() * new_Fraction.getDenominator()) + (new_Fraction.getNumerator() * self.getDenominator())
-           new_denominator=self.getDenominator()*new_Fraction.getDenominator()
+           new_numerator=self.getNumerator() + (other * self.getDenominator())
+           new_denominator=self.getDenominator()
            return Fraction(new_numerator,new_denominator)
         else:
             raise ValueError ("Not valid value to add")
@@ -92,10 +91,9 @@ class Fraction:
            new_numerator = (self.getNumerator() * other.getDenominator()) - (other.getNumerator() * self.getDenominator())
            new_denominator = self.getDenominator() * other.getDenominator()
            return Fraction(new_numerator, new_denominator)   
-        elif isinstance(other, int):  
-           new_Fraction=Fraction(other, 1)
-           new_numerator=(self.getNumerator() * new_Fraction.getDenominator()) - (new_Fraction.getNumerator() * self.getDenominator())
-           new_denominator=self.getDenominator()*new_Fraction.getDenominator()
+        elif isinstance(other, int): 
+           new_numerator=self.getNumerator() - (other * self.getDenominator())
+           new_denominator=self.getDenominator()
            return Fraction(new_numerator,new_denominator)
         else:
             raise ValueError ("Not valid value to substract")
@@ -305,7 +303,7 @@ class Fraction:
            self.simplifyFraction()
            return self
         elif isinstance (other, int):
-           new_numerator=self.getNumerator() * 1 + other * self.getDenominator()
+           new_numerator=self.getNumerator()+ other * self.getDenominator()
            self.setNumerator(new_numerator)
            self.simplifyFraction()
            return self
