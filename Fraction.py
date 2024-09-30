@@ -1,21 +1,19 @@
 from math import gcd
 import math
 from typing import TypeVar
-
 Fraction=TypeVar("Fraction", bound="Fraction")
 
 class Fraction:
-    
-    def __init__(self, numerator:int, denominator:int):
+    def __init__(self, numerator:int, denominator:int)->None:
         self.setNumerator(numerator)
         self.setDenominator(denominator)
         self.simplifyFraction()
         self._is_hashed = False  # Track if the object has been hashed
     
-    def getNumerator(self):
+    def getNumerator(self)->int:
         return self.__numerator
     
-    def setNumerator(self, numerator):
+    def setNumerator(self, numerator:int)->None:
         if numerator is None:
            raise ValueError("Not valid numerator")
         if numerator==0: 
@@ -23,10 +21,10 @@ class Fraction:
         if isinstance(numerator,int):
            self.__numerator=numerator
         
-    def getDenominator(self):
+    def getDenominator(self)->int:
         return self.__denominator
         
-    def setDenominator(self, denominator):
+    def setDenominator(self, denominator: int)->None:
         if not denominator:
            raise ValueError("Not valid denominator")
         if denominator == 0:
@@ -61,7 +59,7 @@ class Fraction:
            self.setDenominator(denominator)
         
     
-    def isNull(self):
+    def isNull(self)->bool:
         """Checks if numerator is 0"""
         if self.getNumerator()==0:
             return True
@@ -83,7 +81,7 @@ class Fraction:
         else:
             raise TypeError ("Not valid value to add")
            
-    def __sub__(self, other):
+    def __sub__(self, other)->Fraction:
         """Returns result of subtraction"""
         if not other:
            return Fraction(self.getNumerator(), self.getDenominator()) 
@@ -112,7 +110,7 @@ class Fraction:
         else:
             raise TypeError("Not valid multiplier")
      
-    def __truediv__(self, other):
+    def __truediv__(self, other)->Fraction:
         """Returns result of division."""
         if not other:
            raise ValueError("Not valid divider")
@@ -128,7 +126,7 @@ class Fraction:
         
     #Rich Comparison Methods
     #Equal
-    def __eq__(self,other):
+    def __eq__(self,other)->bool:
         """Evaluates the equality of two objects"""
         if not other:
            return False
@@ -211,7 +209,7 @@ class Fraction:
             raise TypeError("Given value is Invalid for comparison with Fraction")
     
          
-    def __le__(self, other):
+    def __le__(self, other)->bool:
         """Checks if the given fraction is less than or equal to another fraction (or integer)"""
         if not other:
            return False
@@ -231,7 +229,7 @@ class Fraction:
            raise TypeError("Given value is Invalid for comparison with Fraction")
        
     
-    def __ge__(self,other):
+    def __ge__(self,other)->bool:
         """Checks if the given fraction is greater than or equal to another fraction (or integer)"""
         if not other:
            return False
@@ -331,14 +329,14 @@ class Fraction:
 # Support augmented assignment operations (e.g., fraction1 += fraction2).?
 
 class MixedFraction(Fraction):
-     def __init__(self, numerator:int, denominator:int, whole_part:int ):
+     def __init__(self, numerator:int, denominator:int, whole_part:int )->None:
          super().__init__(numerator,denominator)
          self.__whole_part=whole_part
          
-     def getWholePart(self):
+     def getWholePart(self)->int:
          return self.__whole_part
      
-     def setWholePart(self, wh_part):
+     def setWholePart(self, wh_part)->None:
          if not wh_part:
              raise ValueError("Invalid whole part")
          if isinstance(wh_part,int):
@@ -346,7 +344,7 @@ class MixedFraction(Fraction):
          else:
              raise TypeError("Invalid whole part")
      
-     def __str__(self):
+     def __str__(self)->str:
          return f"{self.__whole_part} {self.getNumerator()}/{self.getDenominator()}"
 
 
