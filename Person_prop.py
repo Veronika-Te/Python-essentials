@@ -1,7 +1,7 @@
 class Person:
     def __init__(self, name:str, age:int)->None:
-        self.__name=name
-        self.__age=age
+        self.name=name
+        self.age=age
     
     @property
     def age(self)->int:
@@ -33,7 +33,7 @@ class Person:
     
 def main()->None:    
     name="Mary"
-    age=23
+    age=-23
     p=Person(name,age)
     print(f"Name:{p.name}, Age:{p.age}")
     new_age=35
