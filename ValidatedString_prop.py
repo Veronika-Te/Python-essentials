@@ -4,9 +4,9 @@ class ValidatedString:
         self.__fset=fset
         
     def __get__(self, instance, owner=None):
-        # print(f"self is {self}")
-        # print(f"instance {instance}")
-        # print(f"owner {owner}")        
+        print(f"self is {self}")
+        print(f"instance {instance}")
+        print(f"owner {owner}")        
       
         if instance is None:
            return self
@@ -14,6 +14,8 @@ class ValidatedString:
            raise AttributeError("Nooo")
         return self.__fget(instance) 
     
+   
+        print("called setter")
     def __set__(self, instance, value):
         if self.__fset==None:
            raise AttributeError("Noooo")
