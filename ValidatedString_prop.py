@@ -15,7 +15,7 @@ class ValidatedString:
         return self.__fget(instance) 
     
    
-        print("called setter")
+       
     def __set__(self, instance, value):
         if self.__fset==None:
            raise AttributeError("Noooo")
