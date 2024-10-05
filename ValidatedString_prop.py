@@ -30,7 +30,6 @@ class User:
     
     @ValidatedString
     def username(self):
-        print("getter called")
         return self.__username
 
     @username.setter
@@ -41,7 +40,6 @@ class User:
         if isinstance(value,str):
            if len(value)>3:
               self.__username=value
-              print("Successfully accessed")
            else:
               raise ValueError("Not valid username")
         else:
