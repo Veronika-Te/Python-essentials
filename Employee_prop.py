@@ -24,7 +24,7 @@ class mydecscriptor:
         
 class Employee:
     def __init__(self,salary:float, name:str= " ")->None:
-        self.__salary=salary
+        self.salary=salary
         self.name=name
     
     @mydecscriptor
