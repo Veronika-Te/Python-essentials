@@ -1,12 +1,12 @@
 class ValidatedString:
-    def __init__(self, fget=None, fset=None)->None:
+    def __init__(self, fget=None, fset=None):
         self.__fget=fget
         self.__fset=fset
         
     def __get__(self, instance, owner=None):
-        print(f"self is {self}")
-        print(f"instance {instance}")
-        print(f"owner {owner}")        
+        # print(f"self is {self}")
+        # print(f"instance {instance}")
+        # print(f"owner {owner}")        
       
         if instance is None:
            return self
@@ -14,8 +14,6 @@ class ValidatedString:
            raise AttributeError("Nooo")
         return self.__fget(instance) 
     
-   
-        print("called setter")
     def __set__(self, instance, value):
         if self.__fset==None:
            raise AttributeError("Noooo")
@@ -30,7 +28,6 @@ class User:
     
     @ValidatedString
     def username(self):
-        print("getter called")
         return self.__username
 
     @username.setter
@@ -40,21 +37,24 @@ class User:
         
         if isinstance(value,str):
            if len(value)>3:
+              #print("Successfully accessed")
               self.__username=value
-              print("Successfully accessed")
            else:
               raise ValueError("Not valid username")
         else:
-            raise ValueError("Not valid username")     
+            raise TypeError("Not valid username")     
         
 def main()->None:
     u=User("user1")
-    u.username
+    #u.username
+    print(u.__dict__)
+    #u.username=8 Error case
     u.username="James"
-   # u.username=8 Error case
     print(u.username)
     
 if __name__=="__main__":
    main()
+
+    
 
     
