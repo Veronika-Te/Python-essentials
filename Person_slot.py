@@ -1,7 +1,7 @@
 class Person:
     __slots__=('__name', '__age', '__email')
 
-    def __init__(self,name=" ", age=0, email=" "):
+    def __init__(self,name:str=" ", age: int=0, email:str=" ")->None:
         self.__name=name
         self.__age=age
         self.__email=email
@@ -47,7 +47,7 @@ class Person:
     def __str__(self):
         return f"\nName: {self.name}, Age: {self.age},\nEmail:{self.email}"
 
-def main():
+def main()->None:
     p1=Person("Mary",27,"mary_janes@gmail.com")
     print(p1)
     p1.name="James"
