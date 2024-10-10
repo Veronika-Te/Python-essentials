@@ -1,12 +1,13 @@
 import abc
 from decimal import Decimal
-from typing import TypeVar
+from typing import Generic, TypeVar
 Order=TypeVar("Order")
 Review=TypeVar("Review")
+from typing import List
 
 class MenuItem:
     __slots__=('__name', '__price', '__ingredients')
-    def __init__(self,name:str=" ", price: Decimal = Decimal('0.0'), ingredients: list[str] = [])->None:
+    def __init__(self,name:str=" ", price: Decimal = Decimal('0.0'), ingredients: List[str] = [])->None:
         self.name=name
         self.price=price
         self.ingredients=ingredients
@@ -56,8 +57,8 @@ class MenuItem:
 
 class Appetizer(MenuItem):
     __slots__=('__glutenfree')
-    def __init__(self,name, price, glutenfree, ingredients)->None:
-        super().__init__(name, price, ingredients)
+    def __init__(self,name:str, price: Decimal, glutenfree: bool, ingredient: List[str])->None:
+        super().__init__(name, price, ingredient)
         self.__glutenfree=glutenfree
    
     @property
@@ -118,13 +119,13 @@ class Customer:
         self.__name=name
         self.__email=email
         self.__phonenumber=phonenumber
-        self.__order_history: list[Order]=[]
-        self.__reviews: list[Review]=[]
+        self.__order_history=[]
+        self.__reviews=[]
         
     def add_to_order_history(self, order: Order)->None:
         if not order:
             raise ValueError("There is no order to add")
-        if isinstance(order,Order):
+        if isinstance(order, Order):
             self.order_history.append(order)
         else:
             raise TypeError("Not valid order history")
