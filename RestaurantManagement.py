@@ -116,11 +116,11 @@ class Customer:
     __slots__=('__name','__email','__phonenumber', '__order_history', '__reviews') 
     
     def __init__(self,name:str=" ", email:str=" ", phonenumber = 0)->None:
-        self.__name=name
-        self.__email=email
-        self.__phonenumber=phonenumber
+        self.name=name
+        self.email=email
+        self.phonenumber=phonenumber
         self.__order_history=[]
-        self.__reviews=[]
+        self.reviews=[]
         
     def add_to_order_history(self, order: Order)->None:
         if not order:
@@ -215,10 +215,10 @@ class Review:
     __slots__=('__customer_name', '__order', '__rating', '__comments')
     
     def __init__(self, customer_name:str,order: Order, rating:int =0, comments:str=" ")->None: 
-        self.__customer_name=customer_name
-        self.__order=order
-        self.__rating=rating
-        self.__comments=comments
+        self.customer_name=customer_name
+        self.order=order
+        self.rating=rating
+        self.comments=comments
    
     @property
     def customer_name(self):
@@ -278,9 +278,9 @@ class Order(abc.ABC):
       __slots__=('__customer', '__menu_items','_total_price','__tips') 
       
       def __init__(self, customer: Customer, menu_items: list[MenuItem], tips: Decimal = Decimal('0.0'))->None:
-          self.__customer = customer 
-          self.__menu_items = menu_items 
-          self.__tips = tips
+          self.customer = customer 
+          self.menu_items = menu_items 
+          self.tips = tips
           self._total_price = self.calculate_total_price()
           self.customer.add_to_order_history(self)
           
@@ -401,17 +401,21 @@ def main():
     cust1=Customer(name, email,phone)
     print(cust1," \n")
     
-    print("___________________________Reviews___________________________")
-    #creating review
-    review=Review(cust1.name,7, "Delicious food")
-    print(review)
-    
-    #Creating dine in order
+
+      #Creating dine in order
     menu_items_lst=[ap1,ent1]
     tips=Decimal('3.50')
     dine=DineInOrder(cust1,menu_items_lst,tips)
     print("Dine in order")
     print(dine)
+    
+    print("___________________________Reviews___________________________")
+    #creating review
+    review=Review(cust1.name,dine,7, "Delicious food")
+    #Review()
+    print(review)
+    
+  
     
     #Creating takeaway in order
     menu_items_lst=[d1]
