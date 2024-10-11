@@ -120,7 +120,7 @@ class Customer:
         self.email=email
         self.phonenumber=phonenumber
         self.__order_history=[]
-        self.reviews=[]
+        self.__reviews=[]
         
     def add_to_order_history(self, order: Order)->None:
         if not order:
@@ -151,17 +151,6 @@ class Customer:
     @property
     def order_history(self):
         return self.__order_history
-
-    @order_history.setter
-    def order_history(self,value):
-        if isinstance(value,list):
-           for i in value:
-               if isinstance(i,Order):
-                   self.__order_history=value
-               else:
-                   raise ValueError("Not valid order history")
-        else:
-            raise TypeError("Not valid order history, please provide list which contains strings")
         
     @property
     def email(self):
@@ -194,13 +183,6 @@ class Customer:
     def reviews(self):
         return self.__reviews
     
-    @reviews.setter
-    def reviews(self,value: list[Review]):
-        if isinstance(value,list):
-            self.__reviews=value
-        else:
-            raise TypeError("Not valid reviews ( must be list of Reviews)")
-            
     def contact_info(self):
         return {"Email":self.email, "Phonenumber":self.phonenumber}
     
@@ -400,6 +382,7 @@ def main():
     phone=199387
     cust1=Customer(name, email,phone)
     print(cust1," \n")
+    
     
 
       #Creating dine in order
