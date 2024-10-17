@@ -2,9 +2,9 @@ class Person:
     __slots__=('__name', '__age', '__email')
 
     def __init__(self,name:str=" ", age: int=0, email:str=" ")->None:
-        self.__name=name
-        self.__age=age
-        self.__email=email
+        self.name=name
+        self.age=age
+        self.email=email
         
     @property
     def name(self):
