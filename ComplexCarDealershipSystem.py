@@ -257,8 +257,16 @@ class Dealership:
     
     def __repr__(self) -> str:
         return f"{type(self).__name__}"
-         
-class Customer:                                                                                           
+    
+class CarOperations(abc.ABC):
+    @abc.abstractmethod
+    def search_cars(self, dealership, make=None, model=None):
+        pass
+    @abc.abstractmethod
+    def purchase_car(self, dealership:Dealership, car:Car, salesperson:Salespeople)->None:
+        pass
+    
+class Customer(CarOperations):                                                                                           
     def __init__(self,name:str, email:str, phonenumber:str)->None:
         self.name=name
         self.email=email
@@ -407,6 +415,10 @@ def main():
 if __name__=="__main__":
     main()
    
+
+
+
+
 
 
 
