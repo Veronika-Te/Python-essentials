@@ -29,7 +29,7 @@ class ModifierYaml:
                 data=yaml.safe_load(file)
                 return data
         except:
-            raise FileNotFoundError(f"Error! The {file} Not found")
+            raise FileNotFoundError(f"Error! The {self.path} Not found")
     
     def change_data_YAML(self, key: str, key2:str, value_key2:int)->None:
         """Modifies data by the key"""
