@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "user_id": "001",
+      "name": "Alice Smith",
+      "age": 28,
+      "email": "alice.smith@example.com",
+      "location": "New York, NY",
+      "position": "Software Engineer",
+      "account_status": "active",
+      "join_date": "2021-04-10"
+    },
+    {
+      "user_id": "002",
+      "name": "Bob Johnson",
+      "age": 35,
+      "email": "bob.johnson@example.com",
+      "location": "San Francisco, CA",
+      "position": "Manager",
+      "account_status": "active",
+      "join_date": "2020-06-22"
+    },
+    {
+      "user_id": "003",
+      "name": "Carol Williams",
+      "age": 42,
+      "email": "carol.williams@example.com",
+      "location": "Chicago, IL",
+      "position": "Data Analyst",
+      "account_status": "inactive",
+      "join_date": "2019-11-05"
+    },
+	  {
+      "user_id": "004",
+      "name": "David Thompson",
+      "age": 30,
+      "email": "david.thompson@example.com",
+      "location": "Austin, TX",
+      "position": "Manager",
+      "account_status": "active",
+      "join_date": "2020-01-12"
+    },
+    {
+      "user_id": "005",
+      "name": "Emma Brown",
+      "age": 27,
+      "email": "emma.brown@example.com",
+      "location": "Seattle, WA",
+      "position": "Graphic Designer",
+      "account_status": "active",
+      "join_date": "2022-05-07"
+    },
+    {
+      "user_id": "006",
+      "name": "Frank Green",
+      "age": 20,
+      "email": "frank.green@example.com",
+      "location": "Boston, MA",
+      "position": "Project Manager",
+      "account_status": "inactive",
+      "join_date": "2018-09-15"
+    }
+  ]
+}
