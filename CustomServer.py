@@ -19,7 +19,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         """Handle POST requests"""
         try:
-            content_length = int(self.headers['Content-Length'])#,64)
+            content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length) 
             print(f"Received POST data: {post_data}")
             try:
