@@ -28,8 +28,8 @@ class ModifierYaml:
             with open (self.path,"r") as file:
                 data=yaml.safe_load(file)
                 return data
-        except:
-            raise FileNotFoundError(f"Error! The {self.path} Not found")
+        except FileNotFoundError as e:
+            raise FileNotFoundError(f"Error! The {file} Not found; {e}")
     
     def change_data_YAML(self, key: str, key2:str, value_key2:int)->None:
         """Modifies data by the key"""
@@ -40,7 +40,7 @@ class ModifierYaml:
            if data.get(key, {}).get(key2):   
                #set value to port
               data[key][key2]=value_key2
-              print(f"Changed {key2} value is {data[key][key2]}")
+              print(f" Message: Changed {key2} value is {data[key][key2]}")
            else:
               raise ValueError(f"Not valid inner key: {key2}")
         else:
@@ -50,23 +50,34 @@ class ModifierYaml:
         """Converts to JSON and writes to the file"""
         data=self._read_log_file()
         try:
+           #in "x" mode in order not to lose data if it already exists
            file=open("data.json",'x')
            #writes to new file called data.json
            json.dump(data,file, indent=2)
-        except:
-            raise FileExistsError("Already exists")
+           file.close()
+        except TypeError as e:
+              # non-serializable object. 
+               raise TypeError(f"JSON encoding error; {e}")
+        except FileExistsError as e:
+               raise FileExistsError(f"Error {file} already exists; {e}") 
+        except Exception as e:
+               raise Exception(str(e))
+        
     
                
 def main()->None:
-    path="config.yaml"
-    my=ModifierYaml(path)
-    #value to change
-    key='server'
-    key2='port'
-    value_key2=9090
-    my.change_data_YAML(key, key2,value_key2)
-    #converting to JSON
-    my.convert_to_json()
+    try:
+        path="config.yaml"
+        my=ModifierYaml(path)
+        #value to change
+        key='server'
+        key2='port'
+        value_key2=9090
+        my.change_data_YAML(key, key2,value_key2)
+        #converting to JSON
+        my.convert_to_json()
+    except Exception as e:
+        print(e)
     
 if __name__=="__main__":
    main()
