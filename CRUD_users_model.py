@@ -83,7 +83,7 @@ def run():
     try:
         HOST="127.0.0.1"
         PORT=8000
-        # Start the FastAPI server
+        # Start the server
         uvicorn.run("CRUD_users:app", host=HOST, port=PORT, reload=True)
     except Exception as e:
         print(e)
