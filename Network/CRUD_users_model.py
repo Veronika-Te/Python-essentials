@@ -84,7 +84,7 @@ def run():
         HOST="127.0.0.1"
         PORT=8000
         # Start the server
-        uvicorn.run("CRUD_users:app", host=HOST, port=PORT, reload=True)
+        uvicorn.run("CRUD_users:app", host=HOST, port=PORT, reload=True, log_level=2)
     except Exception as e:
         print(e)
 

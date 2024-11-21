@@ -342,78 +342,80 @@ class DeliveryOrder(Order):
 def main():
     
     print("~~~~~~~~~~~~~~~~~~~~~~~~Restaurant Menu~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-    
-    #creating menu item
-    name="The Vege-Express"
-    price=Decimal(17.90)
-    ingredients=["vegeterian patty", "cheese", "tomato", "lettuce", "mayonnaise"]
-    mi1=MenuItem(name, price, ingredients)
-    print(mi1)
-    mi1.ingredients
-    
-    #creating dessert item
-    name="Strawbrry cake"
-    price=Decimal(3.99)
-    ingredients=["strawberry","cake"]
-    sugarfree=False
-    d1=Dessert(name, price,ingredients, sugarfree)
-    print(d1)
-    
-    #creating entree
-    name="Bruschetta"
-    price=Decimal(1.99)
-    ingredients=["tomato","basil", "grilled bread"]
-    vegeterian=True
-    ent1=Entree(name,price, ingredients, vegeterian)
-    print(ent1)
-    #ent1.name="Rice"
-    
-    #creating appetizer
-    name="Peanut butter cookie"
-    price=Decimal(1.99)
-    ingredients=["peanut butter","white sugar", "egg"]
-    glutenfree=False
-    ap1=Appetizer(name, price, glutenfree, ingredients)
-    print(ap1)
-    
-    #creating customer
-    name="Michael"
-    email="Michael.Smith@gmail.com"
-    phone=199387
-    cust1=Customer(name, email,phone)
-    print(cust1," \n")
-    
-    
+    try:
+        #creating menu item
+        name="The Vege-Express"
+        price=Decimal(17.90)
+        ingredients=["vegeterian patty", "cheese", "tomato", "lettuce", "mayonnaise"]
+        mi1=MenuItem(name, price, ingredients)
+        print(mi1)
+        mi1.ingredients
+        
+        #creating dessert item
+        name="Strawbrry cake"
+        price=Decimal(3.99)
+        ingredients=["strawberry","cake"]
+        sugarfree=False
+        d1=Dessert(name, price,ingredients, sugarfree)
+        print(d1)
+        
+        #creating entree
+        name="Bruschetta"
+        price=Decimal(1.99)
+        ingredients=["tomato","basil", "grilled bread"]
+        vegeterian=True
+        ent1=Entree(name,price, ingredients, vegeterian)
+        print(ent1)
+        #ent1.name="Rice"
+        
+        #creating appetizer
+        name="Peanut butter cookie"
+        price=Decimal(1.99)
+        ingredients=["peanut butter","white sugar", "egg"]
+        glutenfree=False
+        ap1=Appetizer(name, price, glutenfree, ingredients)
+        print(ap1)
+        
+        #creating customer
+        name="Michael"
+        email="Michael.Smith@gmail.com"
+        phone=199387
+        cust1=Customer(name, email,phone)
+        print(cust1," \n")
+        
+        
 
-      #Creating dine in order
-    menu_items_lst=[ap1,ent1]
-    tips=Decimal('3.50')
-    dine=DineInOrder(cust1,menu_items_lst,tips)
-    print("Dine in order")
-    print(dine)
+        #Creating dine in order
+        menu_items_lst=[ap1,ent1]
+        tips=Decimal('3.50')
+        dine=DineInOrder(cust1,menu_items_lst,tips)
+        print("Dine in order")
+        print(dine)
+        
+        print("___________________________Reviews___________________________")
+        #creating review
+        review=Review(cust1.name,dine,7, "Delicious food")
+        #Review()
+        print(review)
+        
     
-    print("___________________________Reviews___________________________")
-    #creating review
-    review=Review(cust1.name,dine,7, "Delicious food")
-    #Review()
-    print(review)
+        
+        #Creating takeaway in order
+        menu_items_lst=[d1]
+        tips=Decimal('4.50')
+        take_away=TakeawayOrder(cust1,menu_items_lst,tips)
+        print("Take away order")
+        print(take_away)
+        
+        #Creating delivery order
+        menu_items_lst=[ap1]
+        tips=Decimal('7.50')
+        delivery=DeliveryOrder(cust1,menu_items_lst,tips)
+        print("Delivery order")
+        print(delivery)
+    except Exception as e:
+        print(e)
     
-  
-    
-    #Creating takeaway in order
-    menu_items_lst=[d1]
-    tips=Decimal('4.50')
-    take_away=TakeawayOrder(cust1,menu_items_lst,tips)
-    print("Take away order")
-    print(take_away)
-    
-    #Creating delivery order
-    menu_items_lst=[ap1]
-    tips=Decimal('7.50')
-    delivery=DeliveryOrder(cust1,menu_items_lst,tips)
-    print("Delivery order")
-    print(delivery)
-   
     
 if __name__=="__main__":
     main()
