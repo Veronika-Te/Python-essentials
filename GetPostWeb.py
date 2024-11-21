@@ -54,21 +54,24 @@ def filter_json(user_id:int, find_element:str,data:dict)->None:
         print(f"{i} \n") 
        
           
-def main():      
-   link="https://jsonplaceholder.typicode.com/posts"
-   user_id=1
-   find_element="title"
-   data=fetch_data(link, user_id)
-   filter_json(user_id,find_element,data)
-   
-   json_data={
-  "title": "Sample Post Title",
-  "body": "This is the content of the post. It contains details about the topic or information being shared.",
-  "userId": 123
-   }
-   
-   post_json(link,json_data)
-   
+def main():   
+    try:   
+        link="https://jsonplaceholder.typicode.com/posts"
+        user_id=1
+        find_element="title"
+        data=fetch_data(link, user_id)
+        filter_json(user_id,find_element,data)
+
+        json_data={
+        "title": "Sample Post Title",
+        "body": "This is the content of the post. It contains details about the topic or information being shared.",
+        "userId": 123
+        }
+
+        post_json(link,json_data)
+
+    except Exception as e:
+        print(e)
    
 
 if __name__=="__main__":
