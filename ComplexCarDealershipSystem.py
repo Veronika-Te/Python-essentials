@@ -353,72 +353,66 @@ class Customer(CarOperations):
         return f"{type(self).__name__}"
          
 def main():
+    try:
+        dealership = Dealership()
+        print("______________CARS______________\n")
+        #constructing Electic Car
+        #make="      " error check
+        make="Tesla"
+        model="Model S"
+        battery=78
+        p=Decimal(11000)
+        c1_elect=ElectricCar(make,model,p,battery)
+        print(c1_elect)
     
-    dealership = Dealership()
-    print("______________CARS______________\n")
-    #constructing Electic Car
-    #make="      " error check
-    make="Tesla"
-    model="Model S"
-    battery=78
-    p=Decimal(11000)
-    c1_elect=ElectricCar(make,model,p,battery)
-    print(c1_elect)
-    
-     #constructing Hybrid Car
-    #make="      " error check
-    make="Toyota"
-    model="Prius"
-    battery=78
-    fuel=56.7
-    p=Decimal(17300)
-    c2_hyb=HybridCar(make,model,p,fuel,battery)
-    print(c2_hyb)
-    print("_____________________________")
+        #constructing Hybrid Car
+        #make="      " error check
+        make="Toyota"
+        model="Prius"
+        battery=78
+        fuel=56.7
+        p=Decimal(17300)
+        c2_hyb=HybridCar(make,model,p,fuel,battery)
+        print(c2_hyb)
+        print("_____________________________")
 
-    dealership.inventory.append(c1_elect)
-    dealership.inventory.append(c2_hyb)
+        dealership.inventory.append(c1_elect)
+        dealership.inventory.append(c2_hyb)
 
-    #constructing Customer
-    name="Mark"
-    email="marksmith@gmail.com"
-    phonenumber="+37499898989"
-    cust1=Customer(name,email, phonenumber)
+        #constructing Customer
+        name="Mark"
+        email="marksmith@gmail.com"
+        phonenumber="+37499898989"
+        cust1=Customer(name,email, phonenumber)
     
+        #constructing Salespeople
+        name="Anatoliy"
+        com_rate=29
+        sp=Salespeople(name, com_rate)
+        #print(sp)
     
-    #constructing Salespeople
-    name="Anatoliy"
-    com_rate=29
-    sp=Salespeople(name, com_rate)
-    #print(sp)
+        name2="Christina"
+        com_rate2=28
+        sp2=Salespeople(name2, com_rate2)
     
-    name2="Christina"
-    com_rate2=28
-    sp2=Salespeople(name2, com_rate2)
-    
-    dealership.salespeople.append(sp)
-    dealership.salespeople.append(sp2)
+        dealership.salespeople.append(sp)
+        dealership.salespeople.append(sp2)
 
-    #addind record sale
-    tup=(c2_hyb, cust1)
-    sp.record_sale(tup)
+        #adding record sale
+        tup=(c2_hyb, cust1)
+        sp.record_sale(tup)
     
-    print("\n________Sales history________\n")
-    history=sp.view_sales_history()
-    print(f"Salesman {sp} \n {history}")
+        print("\n________Sales history________\n")
+        history=sp.view_sales_history()
+        print(f"Salesman {sp} \n {history}")
     
-    #Purchasing
-    cust1.purchase_car(dealership,c2_hyb, sp)
-    
+        #Purchasing
+        cust1.purchase_car(dealership,c2_hyb, sp)
+        
+    except Exception as e:
+        print(e)
     
     
 if __name__=="__main__":
     main()
    
-
-
-
-
-
-
-
