@@ -336,74 +336,77 @@ class User:
         
         
 def main()->None:
-    #constructing songs
-    title="Lovesong"
-    artist="Adele"
-    length=float(5)
-    song1=Song(title,artist, length)
-    print(song1)
-    
-    title2="Let It Be"
-    artist2="The Beatles"
-    length2=float(4.45)
-    song2=Song(title2,artist2, length2)
-    print(song2)
+    try:
+        #constructing songs
+        title="Lovesong"
+        artist="Adele"
+        length=float(5)
+        song1=Song(title,artist, length)
+        print(song1)
+        
+        title2="Let It Be"
+        artist2="The Beatles"
+        length2=float(4.45)
+        song2=Song(title2,artist2, length2)
+        print(song2)
 
-    title3="title3"
-    artist3=" artist3"
-    length3=float(4.49)
-    song3=Song(title3,artist3, length3, Classic())
-    print(song3)
+        title3="title3"
+        artist3=" artist3"
+        length3=float(4.49)
+        song3=Song(title3,artist3, length3, Classic())
+        print(song3)
 
-    title4="title4"
-    artist4=" artist4"
-    length4=float(3.37)
-    song4=Song(title4,artist4, length4, Rock())
-    
-    
-    #creating user
-    u1=User("Mary")
-    name="Favourite"
-    lst_songs=[song1,song2]
-    u1.create_playlist(name, lst_songs)
-    print(u1)
-    
-    #creating user
-    u2=User("Mark")
-    #has 2 playlists
-    name="Dancing music"
-    name2="Sport music"
-    lst_songs=[song3]
-    lst_songs2=[song4]
-    u2.create_playlist(name,lst_songs)
-    u2.create_playlist(name2,lst_songs2)
-    print(f"Before removing playlist {name}")
-    print(u2)
-    print("After removing")
-    u2.remove_playist(name)
-    print(u2)
-    u2.add_to_listening_history()
-    hist=u2.view_listening_history()
-    print(f"~~~Listening history~~~\n{hist}")
-    
-    title5="Skyfall"
-    artist5="Adele"
-    length5=float(5)
-    song5=Song(title5,artist5, length5)
-    
-    
+        title4="title4"
+        artist4=" artist4"
+        length4=float(3.37)
+        song4=Song(title4,artist4, length4, Rock())
+        
+        
+        #creating user
+        u1=User("Mary")
+        name="Favourite"
+        lst_songs=[song1,song2]
+        u1.create_playlist(name, lst_songs)
+        print(u1)
+        
+        #creating user
+        u2=User("Mark")
+        #has 2 playlists
+        name="Dancing music"
+        name2="Sport music"
+        lst_songs=[song3]
+        lst_songs2=[song4]
+        u2.create_playlist(name,lst_songs)
+        u2.create_playlist(name2,lst_songs2)
+        print(f"Before removing playlist {name}")
+        print(u2)
+        print("After removing")
+        u2.remove_playist(name)
+        print(u2)
+        u2.add_to_listening_history()
+        hist=u2.view_listening_history()
+        print(f"~~~Listening history~~~\n{hist}")
+        
+        title5="Skyfall"
+        artist5="Adele"
+        length5=float(5)
+        song5=Song(title5,artist5, length5)
+        
+        
 
-    album_name="19"
-    artist="Adele"
-    dt=date(2022,12,27)
-    album1=Album(album_name,artist, dt)
-    print("~~~ALBUM~~~")
-    print(album1)
-    album1.add_songs([song1,song5])
-    songs_in_album=album1.view_songs()
-    print(songs_in_album)
-    
-    print(f"Playing....{song5.play()}")
+        album_name="19"
+        artist="Adele"
+        dt=date(2022,12,27)
+        album1=Album(album_name,artist, dt)
+        print("~~~ALBUM~~~")
+        print(album1)
+        album1.add_songs([song1,song5])
+        songs_in_album=album1.view_songs()
+        print(songs_in_album)
+        
+        print(f"Playing....{song5.play()}")
+    except Exception as e:
+        print(e)
 
     
 if __name__=="__main__":
