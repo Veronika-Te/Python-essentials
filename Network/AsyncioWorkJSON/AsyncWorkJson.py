@@ -28,8 +28,7 @@ async def parse_json(file_path):
     except Exception as e:
         raise ValueError(f"An error occurred while parsing JSON from '{file_path}': {e}")
 
-async def main(): 
-    
+async def main()->None: 
     #etracted_data=await asyncio.gather(parse_json(json_file)
     json_file = 'users_data.json'
     json_file2= 'users_data2.json'
@@ -37,11 +36,14 @@ async def main():
     try:
         extracted_data = await asyncio.gather(parse_json(json_file), parse_json(json_file2))
         print("Extracted Data (Names of users):", extracted_data)
+    except FileNotFoundError as e:
+        print(f"Error{e}")
+    except ValueError as e:
+        print(f"Error{e}")
     except asyncio.TimeoutError:
         print(f"Error: The operation timed out while reading {json.file}")
     except Exception as e:
         print(f"Error: {e}")
-
  
 if __name__=="__main__":
     asyncio.run(main())
