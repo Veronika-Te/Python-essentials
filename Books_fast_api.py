@@ -65,7 +65,7 @@ BOOKS = [
 async def read_all_books():
     return BOOKS     
 
-@app.get("/books/{book_id}, status_code=status.HTTP_200_OK")
+@app.get("/books/{book_id}", status_code=status.HTTP_200_OK)
 async def read_book(book_id: int = Path(gt=0)):
     for book in BOOKS:
         if book.id==book_id:
