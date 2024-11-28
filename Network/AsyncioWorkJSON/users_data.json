@@ -1,0 +1,56 @@
+[
+  {
+    "user_id": 1,
+    "name": "Alice Johnson",
+    "age": 29,
+    "email": "alice.johnson@example.com",
+    "purchases": [
+      {
+        "item": "Laptop",
+        "amount": 1200.99,
+        "date": "2024-10-01"
+      },
+      {
+        "item": "Headphones",
+        "amount": 150.50,
+        "date": "2024-10-10"
+      }
+    ]
+  },
+  {
+    "user_id": 2,
+    "name": "Bob Smith",
+    "age": 35,
+    "email": "bob.smith@example.com",
+    "purchases": [
+      {
+        "item": "Smartphone",
+        "amount": 899.99,
+        "date": "2024-10-05"
+      }
+    ]
+  },
+  {
+    "user_id": 3,
+    "name": "Carol White",
+    "age": 23,
+    "email": "carol.white@example.com",
+    "purchases": [
+      {
+        "item": "Tablet",
+        "amount": 499.49,
+        "date": "2024-10-12"
+      },
+      {
+        "item": "Keyboard",
+        "amount": 89.95,
+        "date": "2024-10-15"
+      },
+      {
+        "item": "Mouse",
+        "amount": 49.99,
+        "date": "2024-10-20"
+      }
+    ]
+  }
+]

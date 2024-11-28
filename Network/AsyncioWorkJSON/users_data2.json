@@ -1,0 +1,22 @@
+[
+    {
+    "user_id": 4,
+    "name": "David Clark",
+    "age": 40,
+    "email": "david.clark@example.com",
+    "address": "101 Maple Rd, Star City, USA",
+    "purchases": [
+      {
+        "item": "Gaming Console",
+        "amount": 499.99,
+        "date": "2024-11-01"
+      },
+      {
+        "item": "Game Controller",
+        "amount": 69.99,
+        "date": "2024-11-05"
+      }
+    ],
+    "membership": "Gold"
+    }
+]
