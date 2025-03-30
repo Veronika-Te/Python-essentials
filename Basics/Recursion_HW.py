@@ -34,7 +34,7 @@ def isPalindrome_recursive(input_str):
     if len(input_str) <= 1:
         return True
     else:
-        return input_str[0] == input_str[-1] and IsPalindrome_recursive(input_str[1:-1])
+        return input_str[0] == input_str[-1] and isPalindrome_recursive(input_str[1:-1])
 
 def reverse_recursive_2(s):
     """Recursive function. Reverses a given string. Classwork version"""
