@@ -12,6 +12,7 @@ class DynamicArray():
         
     def getCapacity(self):
         return self.__capacity
+     
     def setCapacity(self, value=10):
         if value>0:
            if isinstance(value,int):
