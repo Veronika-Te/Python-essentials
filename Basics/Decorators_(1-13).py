@@ -33,8 +33,6 @@ def power_factory(n):
         return (n ** n)
     return pow 
 
-
-
 # Use the map function with a lambda to square all elements in a list.
 numbers=[1,2,3,4,5]
 m=map(lambda x: x**2 , numbers)
