@@ -38,6 +38,7 @@ def binary_search(arr, target):
         else:
             low = mid + 1   
     return -1
+  
 
 if __name__ == "__main__":
   

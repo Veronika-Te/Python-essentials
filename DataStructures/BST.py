@@ -44,6 +44,17 @@ class BinarySearchTree:
       self.postorder(node.left)
       self.postorder(node.right)
       print(node.value, end=" ")
+      
+  def search(self,value):
+    current=self.root
+    while current:
+      if value==current.value:
+        return True
+      elif value<current.value:
+        current=current.left
+      else:
+        current=current.right
+    return False
     
 if __name__=="__main__":
   tree=BinarySearchTree()
