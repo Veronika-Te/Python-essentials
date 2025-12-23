@@ -1,7 +1,7 @@
 class Person:
     def __init__(self,name,age):
         self.name=name
-        self.age=age
+        self.setAge(age) 
         
     def printInfo(self)->None:
         """Prints information about person"""
@@ -17,33 +17,28 @@ class Person:
     
     def setAge(self,value):
         """Setter to set age"""
-        print("____After calling setter____")
         if value<0 or value>110:
             raise ValueError("Provide correct age")
         self.age=value
 
 def main()-> None:
-    #Mary
-    name="Mary"
-    age=34
-    person1=Person(name, age)
-    person1.printGreeting()
-    person1.printInfo()
-    #print(person.getAge())
-    changed_age=120
-    person1.setAge(changed_age)
-    person1.printInfo()
-    
-    #Mark
-    name="Mark"
-    age=12
-    person2=Person(name, age)
-    person2.printGreeting()
-    person2.printInfo()
-    changed_age=12.5
-    person2.setAge(changed_age)
-    person2.printInfo()
+    try:
+        #Mary
+        name="Mary"
+        age=34
+        person1=Person(name, age)
+        person1.printGreeting()
+
+        #Mark
+        name="Mark"
+        age=12
+        person2=Person(name, age)
+        changed_age=12.5
+
+    except ValueError as e:
+        print("Error:", e)
+    finally:
+        person1.printInfo()
 
 if __name__=="__main__":  
     main()
- 
